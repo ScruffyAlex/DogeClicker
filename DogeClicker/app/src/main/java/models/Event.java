@@ -41,6 +41,6 @@ public class Event {
     public int addAmount(){
         return 0;
     }
-    public
+
 
 }
