@@ -1,11 +1,8 @@
-package com.example.dogeclicker.controllers;
+package controllers;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 
-import com.example.dogeclicker.R;
-
-import static java.lang.System.out;
+import models.Event;
+import models.PC;
 
 public class AutoClicker  {
 
@@ -19,28 +16,29 @@ public class AutoClicker  {
 
     }
     public static int moneyCounter(){
+        return -1;
 
     }
     public static void upgradeCounter(){
 
     }
     public static int skillPointCounter(){
-
+        return -1;
     }
     public static float applyUpgrade(){
-
+        return -1;
     }
     public static boolean removeUpgrade(){
-
+        return false;
     }
     public static int runEvent(){
-
+        return -1;
     }
     public static int click(){
-
+        return -1;
     }
     public static int autoClick(){
-
+        return -1;
     }
 
 

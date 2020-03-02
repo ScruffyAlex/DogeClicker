@@ -1,11 +1,9 @@
-package com.example.dogeclicker.view;
+package com.example.dogeclicker.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.dogeclicker.R;
-
-import static java.lang.System.out;
 
 public class MainActivity extends AppCompatActivity {
 
