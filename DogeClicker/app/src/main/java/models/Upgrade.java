@@ -1,5 +1,7 @@
 package models;
 
+import com.example.dogeclicker.models.UpgradeType;
+
 public class Upgrade {
     private String name;
     private UpgradeType type;
