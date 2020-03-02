@@ -4,6 +4,14 @@ import android.view.View;
 
 public class GamePage {
 
+    public void onCreate(){
+
+    }
+
+    public void launchActivity(){
+
+    }
+
     public void onUpgradeCilck(View v){
 
     }
