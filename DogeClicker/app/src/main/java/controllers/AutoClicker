@@ -1,0 +1,46 @@
+package controllers;
+
+
+import models.Event;
+import models.PC;
+
+public class AutoClicker  {
+
+    private float coinSum;
+    private int skillPointSum;
+    private float masterMultiplyer;
+    private PC privatePC;
+    private Event currentEvent;
+
+    public static void run(){
+
+    }
+    public static int moneyCounter(){
+        return -1;
+
+    }
+    public static void upgradeCounter(){
+
+    }
+    public static int skillPointCounter(){
+        return -1;
+    }
+    public static float applyUpgrade(){
+        return -1;
+    }
+    public static boolean removeUpgrade(){
+        return false;
+    }
+    public static int runEvent(){
+        return -1;
+    }
+    public static int click(){
+        return -1;
+    }
+    public static int autoClick(){
+        return -1;
+    }
+
+
+
+}
