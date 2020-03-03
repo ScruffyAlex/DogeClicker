@@ -1,4 +1,4 @@
-package models;
+package com.example.dogeclicker.models;
 
 public class Event {
     private String name;
