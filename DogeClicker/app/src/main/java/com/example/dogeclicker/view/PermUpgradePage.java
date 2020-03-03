@@ -1,20 +1,12 @@
 package com.example.dogeclicker.view;
 
-import android.os.Bundle;
 import android.view.View;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dogeclicker.R;
+public class PermUpgradePage {
 
-public class PermUpgradePage extends AppCompatActivity {
-
-
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.perm_upgrade_page);
+    public void onCreate(){
 
     }
-
 
     public void launchActivity(){
 
@@ -32,6 +24,6 @@ public class PermUpgradePage extends AppCompatActivity {
 
     }
     public void onNextPcClick(View v){
-
+        
     }
 }
