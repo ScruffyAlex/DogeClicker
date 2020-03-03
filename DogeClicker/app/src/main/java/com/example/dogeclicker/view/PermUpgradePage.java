@@ -1,16 +1,24 @@
 package com.example.dogeclicker.view;
 
+import android.os.Bundle;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class PermUpgradePage {
+import com.example.dogeclicker.R;
 
-    public void onCreate(){
+public class PermUpgradePage extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.perm_upgrade_page);
 
     }
 
-    public void launchActivity(){
 
-    }
+//    public void backButton(View v){
+//        setContentView(R.layout.activity_main);
+//    }
 
     public void onWifiClick(View v){
 
@@ -24,6 +32,6 @@ public class PermUpgradePage {
 
     }
     public void onNextPcClick(View v){
-        
+
     }
 }

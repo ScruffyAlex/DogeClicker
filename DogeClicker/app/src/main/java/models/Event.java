@@ -1,5 +1,7 @@
 package models;
 
+import java.util.ArrayList;
+
 public class Event {
     private String name;
     private int effect;
@@ -43,4 +45,69 @@ public class Event {
     }
 
 
+    public static class PC {
+        private PCType pcType;
+        private int prestiegeLevel;
+        private ArrayList<Upgrade> pcUpgrades = new ArrayList<>();
+
+
+        public PCType getPcType() {
+            return pcType;
+        }
+
+        public void setPcType(PCType pcType) {
+            this.pcType = pcType;
+        }
+
+        public int getPrestiegeLevel() {
+            return prestiegeLevel;
+        }
+
+        public void setPrestiegeLevel(int prestiegeLevel) {
+            this.prestiegeLevel = prestiegeLevel;
+        }
+
+        public ArrayList<Upgrade> getPcUpgrades() {
+            return pcUpgrades;
+        }
+
+        public void setPcUpgrades(ArrayList<Upgrade> pcUpgrades) {
+            this.pcUpgrades = pcUpgrades;
+        }
+    }
+
+    public static class Upgrade {
+        private String name;
+        private UpgradeType type;
+        private double multiplier;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public UpgradeType getType() {
+            return type;
+        }
+
+        public void setType(UpgradeType type) {
+            this.type = type;
+        }
+
+        public double getMultiplier() {
+            return multiplier;
+        }
+
+        public void setMultiplier(double multiplier) {
+            this.multiplier = multiplier;
+        }
+
+        @Override
+        public String toString(){
+         return "uwu";
+        }
+    }
 }
