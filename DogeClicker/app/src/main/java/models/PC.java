@@ -1,5 +1,7 @@
 package models;
 
+import com.example.dogeclicker.models.PCType;
+
 import java.util.ArrayList;
 
 public class PC {
