@@ -14,6 +14,7 @@ public class ClickManager {
     }
 
     public int coinCounter(){
+
         return 0;
     }
 
@@ -26,6 +27,7 @@ public class ClickManager {
     }
 
     public float applyUpgrade(){
+
         return 0f;
     }
 
@@ -34,7 +36,8 @@ public class ClickManager {
     }
 
     public float runEvent(){
-     return 0f;
+
+                return 0f;
     }
 
     public float click(){
