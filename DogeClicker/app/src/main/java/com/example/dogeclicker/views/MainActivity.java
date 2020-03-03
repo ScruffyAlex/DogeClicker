@@ -1,4 +1,4 @@
-package com.example.dogeclicker.view;
+package com.example.dogeclicker.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,10 +12,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.start_page);
 
     }
 
+    public void launchActivity(View v){
+        setContentView(R.layout.activity_main);
+
+    }
+    public void backButton(View v){
+        setContentView(R.layout.activity_main);
+    }
 
 
     public void onUpgradeCilck(View v){
