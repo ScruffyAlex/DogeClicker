@@ -1,4 +1,4 @@
-package com.example.dogeclicker.views;
+package com.example.dogeclicker.view;
 
 
 import android.view.View;
