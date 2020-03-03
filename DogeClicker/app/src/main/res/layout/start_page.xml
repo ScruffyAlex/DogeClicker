@@ -4,7 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#353535"
+    >
+
 
     <TextView
         android:id="@+id/titleBox"
@@ -14,6 +17,7 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="164dp"
         android:text="Title goes Here"
+        android:textColor="#ffff"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

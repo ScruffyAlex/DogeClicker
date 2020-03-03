@@ -16,9 +16,7 @@ public class PermUpgradePage extends AppCompatActivity {
     }
 
 
-//    public void backButton(View v){
-//        setContentView(R.layout.activity_main);
-//    }
+
 
     public void onWifiClick(View v){
 
