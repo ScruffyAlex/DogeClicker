@@ -19,7 +19,12 @@ public class ClickManager {
 
     public void run(){
 
+    }
 
+    public int randomNumber(int min,int max){
+        Random rng = new Random();
+        int upperBound = max-min+1;
+        return rng.nextInt(upperBound)+min;
     }
 
     public int coinCounter(){
@@ -49,11 +54,7 @@ public class ClickManager {
     }
 
 
-    public int randomNumber(int min,int max){
-        Random rng = new Random();
-        int upperBound = max-min+1;
-        return rng.nextInt(upperBound)+min;
-    }
+
 
 
 
