@@ -55,7 +55,7 @@
         android:layout_marginTop="68dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="459dp"
-        android:onClick="onUpgradeCilck"
+        android:onClick="onUpgradeClick"
         android:text="Upgrades"
         app:layout_constraintBottom_toTopOf="@+id/cursorBtn"
         app:layout_constraintEnd_toEndOf="parent"
