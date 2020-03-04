@@ -1,13 +1,37 @@
-package controllers;
-import java.lang.Object;
+package com.example.dogeclicker.controller;
+import android.widget.Button;
+
+import java.awt.event.InputEvent;
+import java.lang.Thread;
+import java.awt.AWTException;
 import java.awt.Robot;
-import models.Event;
-import models.PC;
+import java.awt.event.MouseEvent;
 
 public class AutoClicker  {
     private Robot robot;
+    private int delay;
 
     public AutoClicker() {
+        try{
+            robot = new Robot();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        delay = 300;
 
     }
+
+    public void clickButton(Button button){
+        try{
+            robot.mousePress(button);
+            robot.delay(delay);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void setDelay(int ms) {
+        this.delay = ms;
+    }
+
 }
