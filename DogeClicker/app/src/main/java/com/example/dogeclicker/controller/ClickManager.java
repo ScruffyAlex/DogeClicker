@@ -41,16 +41,19 @@ public class ClickManager {
     }
 
 
+    public int randomNumber(int min,int max){
+        Random rng = new Random();
+        int upperBound = max-min+1;
+        return rng.nextInt(upperBound)+min;
+    }
 
 
 
     public float runEvent(){
-        Random rng = new Random();
 
-        rng.nextInt(10);
-        int coinEffect = rng.nextInt(999999);
+        int coinEffect = randomNumber(0,999999);
         Event currentEvent= new Event("Test",0,"Test",false);
-                switch(rng.nextInt(5)) {
+                switch(randomNumber(1,30)) {
 
                     case 1:
 
