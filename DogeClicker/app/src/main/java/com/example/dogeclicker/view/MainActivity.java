@@ -25,12 +25,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void backButton(View v){
-
         setContentView(R.layout.activity_main);
     }
 
 
-    public void onUpgradeCilck(View v){
+    public void onUpgradeClick(View v){
         setContentView(R.layout.perm_upgrade_page);
 
     }
@@ -44,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCursorClick(View v){
+
 
 
     }
