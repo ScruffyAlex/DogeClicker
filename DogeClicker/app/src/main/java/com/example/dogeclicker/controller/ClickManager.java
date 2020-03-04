@@ -1,6 +1,7 @@
 package com.example.dogeclicker.controller;
 
 import com.example.dogeclicker.models.Event;
+import com.example.dogeclicker.models.PC;
 import com.example.dogeclicker.models.Upgrade;
 
 import java.lang.reflect.Array;
@@ -12,7 +13,7 @@ public class ClickManager {
     public float coinSum = 0;
     public int skillPointSum = 0;
     public float masterMultiplyer = 0f;
-    public Event.PC currentPC;
+    public PC currentPC;
     public Event currentEvent;
     public ArrayList<Upgrade> upgrades = new ArrayList<>();
 
