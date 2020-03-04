@@ -8,6 +8,13 @@ public class Event {
     private String promptOfEvent;
     private boolean goodEvent;
 
+    public Event(String name, int effect, String promptOfEvent, boolean goodEvent) {
+        setName(name);
+        setEffect(effect);
+        setPromptOfEvent(promptOfEvent);
+        setGoodEvent(goodEvent);
+    }
+
     public String getName() {
         return name;
     }
