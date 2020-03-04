@@ -1,10 +1,17 @@
-package models;
+package com.example.dogeclicker.models;
 
 public class Event {
     private String name;
     private int effect;
     private String promptOfEvent;
     private boolean goodEvent;
+
+    public Event(String name, int effect, String promptOfEvent, boolean goodEvent) {
+        setName(name);
+        setEffect(effect);
+        setPromptOfEvent(promptOfEvent);
+        setGoodEvent(goodEvent);
+    }
 
     public String getName() {
         return name;
@@ -41,6 +48,7 @@ public class Event {
     public int addAmount(){
         return 0;
     }
-    public
+
+
 
 }
