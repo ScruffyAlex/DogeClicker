@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
+    tools:context=".view.MainActivity"
+    android:background="@drawable/black_gradient">
 
     <Button
         android:id="@+id/ramBtn"
@@ -66,11 +67,12 @@
         android:layout_width="202dp"
         android:layout_height="194dp"
         android:layout_marginStart="116dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="228dp"
         android:layout_marginEnd="133dp"
-        android:background="@drawable/coin"
+        android:background="@drawable/dogecoin"
+        android:onClick="onDogeCoinClick"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
