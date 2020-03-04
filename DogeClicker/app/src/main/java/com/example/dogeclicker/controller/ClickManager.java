@@ -18,6 +18,7 @@ public class ClickManager {
 
     public void run(){
 
+
     }
 
     public int coinCounter(){
@@ -27,12 +28,18 @@ public class ClickManager {
 
     public void addUpgrade(){
 
+
     }
 
 
     public boolean removeUpgrade(){
-
-        return true;
+        if(upgrades.size()>0){
+            upgrades.remove(0);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 
