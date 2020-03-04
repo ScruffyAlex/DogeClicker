@@ -1,7 +1,5 @@
 package com.example.dogeclicker.models;
 
-import java.util.ArrayList;
-
 public class Event {
     private String name;
     private int effect;
