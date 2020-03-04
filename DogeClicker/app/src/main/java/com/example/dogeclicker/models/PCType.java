@@ -1,4 +1,4 @@
-package models;
+package com.example.dogeclicker.models;
 
 public enum PCType {
     POTATO,

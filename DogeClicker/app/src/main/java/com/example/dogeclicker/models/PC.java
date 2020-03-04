@@ -4,9 +4,14 @@ import java.util.ArrayList;
 
 public class PC {
     private PCType pcType;
-    private int prestiegeLevel;
+    private int prestigeLevel;
     private ArrayList<Upgrade> pcUpgrades = new ArrayList<>();
 
+    public PC(PCType pcType, int prestigeLevel, ArrayList<Upgrade> pcUpgrades) {
+        this.pcType = pcType;
+        this.prestigeLevel = prestigeLevel;
+        this.pcUpgrades = pcUpgrades;
+    }
 
     public PCType getPcType() {
         return pcType;
@@ -16,12 +21,12 @@ public class PC {
         this.pcType = pcType;
     }
 
-    public int getPrestiegeLevel() {
-        return prestiegeLevel;
+    public int getPrestigeLevel() {
+        return prestigeLevel;
     }
 
-    public void setPrestiegeLevel(int prestiegeLevel) {
-        this.prestiegeLevel = prestiegeLevel;
+    public void setPrestigeLevel(int prestigeLevel) {
+        this.prestigeLevel = prestigeLevel;
     }
 
     public ArrayList<Upgrade> getPcUpgrades() {

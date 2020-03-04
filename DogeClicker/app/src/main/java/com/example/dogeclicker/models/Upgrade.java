@@ -7,6 +7,12 @@ public class Upgrade {
     private UpgradeType type;
     private double multiplier;
 
+    public Upgrade(String name, UpgradeType type, double multiplier) {
+        this.name = name;
+        this.type = type;
+        this.multiplier = multiplier;
+    }
+
     public String getName() {
         return name;
     }
