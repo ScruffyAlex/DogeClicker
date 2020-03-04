@@ -52,18 +52,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="311dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="459dp"
-        android:onClick="onUpgradeClick"
+        android:onClick="onUpgradeCilck"
         android:text="Upgrades"
-        app:layout_constraintBottom_toTopOf="@+id/cursorBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/dogeBtn"
         android:layout_width="202dp"
         android:layout_height="194dp"
         android:layout_marginStart="116dp"
@@ -71,6 +70,7 @@
         android:layout_marginEnd="133dp"
         android:background="@drawable/dogecoin"
         android:onClick="onDogeCoinClick"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toStartOf="parent"

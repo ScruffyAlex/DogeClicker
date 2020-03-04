@@ -3,6 +3,10 @@ package com.example.dogeclicker.view;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.dogeclicker.R;
 
@@ -31,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onDogeCoinClick(View v){
+        ImageButton dogeBtn = findViewById(R.id.dogeBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        dogeBtn.startAnimation(myAnimation);
+
 
     }
 
