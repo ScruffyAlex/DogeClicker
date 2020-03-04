@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void backButton(View v){
+
         setContentView(R.layout.activity_main);
     }
 

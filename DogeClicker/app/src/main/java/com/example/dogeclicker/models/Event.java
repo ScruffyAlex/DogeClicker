@@ -1,4 +1,4 @@
-package models;
+package com.example.dogeclicker.models;
 
 import java.util.ArrayList;
 
