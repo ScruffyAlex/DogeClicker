@@ -3,6 +3,7 @@ package com.example.dogeclicker.controller;
 import com.example.dogeclicker.models.Event;
 import com.example.dogeclicker.models.PC;
 import com.example.dogeclicker.models.Upgrade;
+import com.example.dogeclicker.view.MainActivity;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Random;
 
 public class ClickManager {
 
+    MainActivity gameActivity = new MainActivity();
     public float coinSum = 0;
     public int skillPointSum = 0;
     public float masterMultiplyer = 0f;
@@ -33,7 +35,9 @@ public class ClickManager {
     }
 
     public void addUpgrade(){
+       if(gameActivity.onCPUClick()=true){
 
+       }
 
     }
 

@@ -14,6 +14,12 @@ import com.example.dogeclicker.R;
 public class MainActivity extends AppCompatActivity {
     static float masterSum =0;
     float coinSum;
+    static int cursorLvl = 0;
+    static int ramLvl = 0;
+    static int cpuLvl = 0;
+    boolean cursorBought = false;
+    boolean cpuBought = false;
+    boolean ramBought = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,31 +51,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onCursorClick(View v){
-        int cursorSum = 0;
+
         int cost = 5;
         float cursorMultiplier = 0.5f;
         if(masterSum>cost){
-            cursorSum++;
+            cursorLvl+=1;
+            return cursorBought = true;
+        }
+        else{
+            return cursorBought = false;
+        }
+    }
+
+    public boolean onCPUClick(View v){
+        int cost = 100;
+        float cpuMultiplier = 2f;
+        if(masterSum>cost){
+            cpuLvl+=1;
+            return  cpuBought = true;
+        }
+        else{
+            return cpuBought = false;
+        }
+    }
+    public boolean onRAMClick(View v){
+        int cost = 5;
+        float cursorMultiplier = 0.5f;
+        if(masterSum>cost){
+            ramLvl+=1;
             return true;
-            /*TODO Change text for the cursor sum. Also create calculation that increases the cost
-            according to how many updates were already bought.
-             */
         }
         else{
             return false;
         }
-
-
-    }
-
-    public void onCPUClick(View v){
-            /*TODO Change text for the CPU sum. Also create calculation that increases the cost
-            according to how many updates were already bought.
-             */
-    }
-    public void onRAMClick(View v){
-        /*TODO Change text for the RAM sum. Also create calculation that increases the cost
-            according to how many updates were already bought.
-             */
     }
 }
