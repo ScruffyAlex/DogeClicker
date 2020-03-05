@@ -8,15 +8,14 @@ import com.example.dogeclicker.R;
 
 public class PermUpgradePage extends AppCompatActivity {
 
+    static int skillPointSum = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perm_upgrade_page);
 
     }
-
-
-
 
     public void onWifiClick(View v){
 
@@ -31,5 +30,10 @@ public class PermUpgradePage extends AppCompatActivity {
     }
     public void onNextPcClick(View v){
 
+    }
+
+
+    public int skillPointCounter(){
+        return skillPointSum;
     }
 }

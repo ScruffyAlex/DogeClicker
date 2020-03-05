@@ -13,7 +13,6 @@ public class ClickManager {
 
     MainActivity gameActivity = new MainActivity();
     public float coinSum = 0;
-    public int skillPointSum = 0;
     public float masterMultiplyer = 0f;
     public PC currentPC;
     public Event currentEvent;
@@ -45,16 +44,6 @@ public class ClickManager {
             return false;
         }
     }
-
-
-    public int skillPointCounter(){
-        return skillPointSum;
-    }
-
-
-
-
-
 
     public float runEvent(){
 

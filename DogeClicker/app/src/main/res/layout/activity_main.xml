@@ -85,14 +85,15 @@
         app:layout_constraintTop_toBottomOf="@+id/masterMultiplier" />
 
     <TextView
-        android:id="@+id/moneyCounter"
+        android:id="@+id/coinCounter"
         android:layout_width="387dp"
         android:layout_height="29dp"
         android:layout_marginStart="145dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="137dp"
         android:fontFamily="@font/delius_unicase"
-        android:text="Money: 0"
+        
+        android:text="Coins: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/masterMultiplier"
@@ -116,7 +117,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/moneyCounter" />
+        app:layout_constraintTop_toBottomOf="@+id/coinCounter" />
 
     <TextView
         android:id="@+id/ramLvl"
@@ -174,7 +175,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="69dp"
         android:layout_marginBottom="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/moneyCounter"
+        app:layout_constraintBottom_toTopOf="@+id/coinCounter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintStart_toStartOf="parent"
