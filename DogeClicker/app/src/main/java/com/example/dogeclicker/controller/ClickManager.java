@@ -61,9 +61,7 @@ public class ClickManager {
         int coinEffect = randomNumber(0,999999);
         Event currentEvent= new Event("Test",0,"Test",false);
                 switch(randomNumber(1,30)) {
-
                     case 1:
-
                         currentEvent = new Event("Wild Doge!", coinEffect,"A wild doge has " +
                                 "entered your home! They left you "+coinEffect+" Doge Coins!",true);
                     case 2:
@@ -75,6 +73,8 @@ public class ClickManager {
                     case 5:
                         break;
                     case 6:
+                        currentEvent = new Event("Wild Doge!", coinEffect,"A wild doge has " +
+                                "entered your home! They took "+coinEffect+" Doge Coins!",false);
                         break;
                     case 7:
                         break;
@@ -85,6 +85,8 @@ public class ClickManager {
                     case 10:
                         break;
                     case 11:
+                        currentEvent = new Event("Wifi Shutdown!", coinEffect,"Your wifi has down down." +
+                                " In the process you have lost "+coinEffect+" Doge Coins!",false);
                         break;
                     case 12:
                         break;
@@ -95,12 +97,15 @@ public class ClickManager {
                     case 15:
                         break;
                     case 16:
+                        currentEvent = new Event("Power Out!", coinEffect,"After a vicious storm " +
+                                "your power went out overnight. In the process you have lost "+coinEffect+" Doge Coins!",false);
                         break;
                     case 17:
                         break;
                     case 18:
                         break;
-                    case 19:
+                    case 19:currentEvent = new Event("Black Hat Hacker!", coinEffect,"A Black Hat Hacker has " +
+                            "hacked into your system! You've lost "+ coinEffect+" Doge Coins!",true);
                         break;
                     case 20:
                         break;
