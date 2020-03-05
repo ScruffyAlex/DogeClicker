@@ -34,12 +34,6 @@ public class ClickManager {
         return 0;
     }
 
-    public void addUpgrade(){
-       if(gameActivity.onCPUClick()=true){
-
-       }
-
-    }
 
 
     public boolean removeUpgrade(){
