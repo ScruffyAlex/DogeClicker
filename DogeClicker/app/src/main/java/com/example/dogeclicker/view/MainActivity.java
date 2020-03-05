@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_page);
 
+
     }
 
     public void launchActivity(View v){
@@ -43,15 +44,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCursorClick(View v){
-
-
+        Button cursorBtn = findViewById(R.id.cursorBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        cursorBtn.startAnimation(myAnimation);
 
     }
 
     public void onCPUClick(View v){
+        Button cpuBtn = findViewById(R.id.cpuBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        cpuBtn.startAnimation(myAnimation);
 
     }
     public void onRAMClick(View v){
+        Button ramBtn = findViewById(R.id.ramBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        ramBtn.startAnimation(myAnimation);
 
     }
 }
