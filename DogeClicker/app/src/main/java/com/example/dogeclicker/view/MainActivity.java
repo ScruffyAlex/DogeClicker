@@ -67,25 +67,10 @@ public class MainActivity extends AppCompatActivity {
         dogeBtn.startAnimation(myAnimation);
     }
 
-    public void onCursorClick(View v){
+    public boolean onCursorClick(View v){
         Button cursorBtn = findViewById(R.id.cursorBtn);
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         cursorBtn.startAnimation(myAnimation);
-
-    }
-
-    public void onCPUClick(View v){
-        Button cpuBtn = findViewById(R.id.cpuBtn);
-        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
-        cpuBtn.startAnimation(myAnimation);
-
-    }
-    public void onRAMClick(View v){
-        Button ramBtn = findViewById(R.id.ramBtn);
-        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
-        ramBtn.startAnimation(myAnimation);
-
-    public boolean onCursorClick(View v){
         int cost = 5;
         //float cursorMultiplier = 0.5f;
         if(masterSum>cost){
@@ -95,9 +80,13 @@ public class MainActivity extends AppCompatActivity {
         else{
             return cursorBought = false;
         }
+
     }
 
     public boolean onCPUClick(View v){
+        Button cpuBtn = findViewById(R.id.cpuBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        cpuBtn.startAnimation(myAnimation);
         int cost = 100;
         //float cpuMultiplier = 2f;
         if(masterSum>cost){
@@ -107,17 +96,21 @@ public class MainActivity extends AppCompatActivity {
         else{
             return cpuBought = false;
         }
+
     }
-    public boolean onRAMClick(View v){
+    public boolean onRAMClick(View v) {
+        Button ramBtn = findViewById(R.id.ramBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        ramBtn.startAnimation(myAnimation);
         int cost = 5;
         //float ramMultiplier = 3f;
-        if(masterSum>cost){
-            ramLvl+=1;
+        if (masterSum > cost) {
+            ramLvl += 1;
             return true;
-        }
-        else{
+        } else {
             //uwu
             return false;
         }
+
     }
 }
