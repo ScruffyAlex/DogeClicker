@@ -104,8 +104,9 @@ public class ClickManager {
                         break;
                     case 18:
                         break;
-                    case 19:currentEvent = new Event("Black Hat Hacker!", coinEffect,"A Black Hat Hacker has " +
-                            "hacked into your system! You've lost "+ coinEffect+" Doge Coins!",true);
+                    case 19:
+                        currentEvent = new Event("Black Hat Hacker!", coinEffect,"A Black Hat Hacker has " +
+                            "hacked into your system! You've lost "+ coinEffect+" Doge Coins!",false);
                         break;
                     case 20:
                         break;
@@ -114,18 +115,24 @@ public class ClickManager {
                     case 22:
                         break;
                     case 23:
+                        currentEvent = new Event("Grey Hat Hacker!", coinEffect,"A Grey Hat hacker " +
+                                "hacked into your system! Luckily it's Aiden Pearce. He's generous and gives you"+ coinEffect+" Doge Coins!",true);
                         break;
                     case 24:
                         break;
                     case 25:
                         break;
                     case 26:
+                        currentEvent = new Event("White Hat Hacker!", coinEffect,"A White Hat Hacker has " +
+                                "hacked into your system! You're grateful for his services but still you gotta pay up. You lose"+ coinEffect+" Doge Coins!",true);
                         break;
                     case 27:
                         break;
                     case 28:
                         break;
                     case 29:
+                        currentEvent = new Event("Doge Coin Value!", coinEffect,"Doge Coin Value has gone up!" +
+                                "You gain"+ coinEffect+" Doge Coins!",true);
                         break;
                     case 30:
                         break;
