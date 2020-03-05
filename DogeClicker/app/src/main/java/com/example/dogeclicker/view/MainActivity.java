@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         ramBtn.startAnimation(myAnimation);
 
     public boolean onCursorClick(View v){
-
         int cost = 5;
         //float cursorMultiplier = 0.5f;
         if(masterSum>cost){
