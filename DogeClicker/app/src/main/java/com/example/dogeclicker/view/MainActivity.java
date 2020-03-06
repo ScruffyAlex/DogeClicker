@@ -58,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onUpgradeClick(View v){
+        Button upgrade = findViewById(R.id.permUpgradeBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        upgrade.startAnimation(myAnimation);
         setContentView(R.layout.perm_upgrade_page);
         generateUpdateInfo();
     }
