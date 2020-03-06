@@ -25,8 +25,13 @@ public class PermUpgradePage extends AppCompatActivity {
 
     }
 
-    public void onWifiClick(View v) {
-        if(MainActivity.masterSum>)
+    public boolean onWifiClick(View v) {
+        if(MainActivity.masterSum>upgradeCost){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public void onElectricityClick(View v) {
