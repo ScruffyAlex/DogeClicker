@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void launchActivity(View v){
         setContentView(R.layout.activity_main);
-
+       overridePendingTransition(R.anim.slideinright,R.anim.slideinleft);
 
 
     }
