@@ -10,10 +10,11 @@
 
     <Button
         android:id="@+id/ramBtn"
-        android:layout_width="133dp"
-        android:layout_height="158dp"
+        android:layout_width="131dp"
+        android:layout_height="141dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="578dp"
+        android:fontFamily="@font/delius_unicase"
         android:onClick="onRAMClick"
         android:text="RAM"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,10 +24,11 @@
 
     <Button
         android:id="@+id/cpuBtn"
-        android:layout_width="133dp"
-        android:layout_height="158dp"
+        android:layout_width="135dp"
+        android:layout_height="142dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="573dp"
+        android:fontFamily="@font/delius_unicase"
         android:onClick="onCPUClick"
         android:text="CPU"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,10 +38,11 @@
 
     <Button
         android:id="@+id/cursorBtn"
-        android:layout_width="133dp"
-        android:layout_height="158dp"
+        android:layout_width="132dp"
+        android:layout_height="143dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="576dp"
+        android:fontFamily="@font/delius_unicase"
         android:onClick="onCursorClick"
         android:text="Cursor"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,32 +54,133 @@
         android:id="@+id/permUpgradeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="311dp"
-        android:layout_marginTop="81dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/delius_unicase"
         android:onClick="onUpgradeClick"
         android:text="Upgrades"
+        app:layout_constraintBottom_toTopOf="@+id/cpuLvl"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/dogeBtn"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/dogeBtn"
-        android:layout_width="258dp"
-        android:layout_height="247dp"
+        android:layout_width="222dp"
+        android:layout_height="208dp"
         android:layout_marginStart="116dp"
-        android:layout_marginTop="212dp"
         android:layout_marginEnd="133dp"
-        android:layout_marginBottom="114dp"
-        android:background="@drawable/dogecoin"
 
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/dogecoin"
         android:onClick="onDogeCoinClick"
-        app:layout_constraintBottom_toTopOf="@+id/ramBtn"
+        app:layout_constraintBottom_toTopOf="@+id/permUpgradeBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintHorizontal_bias="0.366"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/masterMultiplier" />
+
+    <TextView
+        android:id="@+id/coinCounter"
+        android:layout_width="387dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="137dp"
+        android:fontFamily="@font/delius_unicase"
+        
+        android:text="Coins: 0"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/masterMultiplier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/masterMultiplier"
+        android:layout_width="392dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="174dp"
+        android:fontFamily="@font/delius_unicase"
+        android:text="Mutilper:"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/dogeBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coinCounter" />
+
+    <TextView
+        android:id="@+id/ramLvl"
+        android:layout_width="93dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="74dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/delius_unicase"
+        android:text="Level: 0"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/ramBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dogeBtn"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/cpuLvl"
+        android:layout_width="94dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="21dp"
+        android:fontFamily="@font/delius_unicase"
+        android:text="Level: 0"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/cpuBtn"
+        app:layout_constraintEnd_toStartOf="@+id/cursorLvl"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/ramLvl" />
+
+    <TextView
+        android:id="@+id/cursorLvl"
+        android:layout_width="92dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="74dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="21dp"
+        android:fontFamily="@font/delius_unicase"
+        android:text="Level: 0"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/cursorBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dogeBtn"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="251dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/coinCounter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hamomn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

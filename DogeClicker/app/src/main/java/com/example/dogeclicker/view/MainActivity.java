@@ -7,69 +7,136 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.dogeclicker.R;
+import com.example.dogeclicker.models.Upgrade;
+import com.example.dogeclicker.models.UpgradeType;
 
 
 public class MainActivity extends AppCompatActivity {
     static float masterSum =0;
-    float coinSum;
+    float coinSum = 0;
+    static int cursorLvl = 0;
+    static int ramLvl = 0;
+    static int cpuLvl = 0;
+    boolean cursorBought = false;
+    boolean cpuBought = false;
+    boolean ramBought = false;
+
+    TextView cursorLvlText;
+    TextView ramLvlText;
+    TextView cpuLvlText;
+    TextView coinTotal;
+    TextView multiplyerTotal;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_page);
-        coinSum = masterSum;
     }
 
     public void launchActivity(View v){
         setContentView(R.layout.activity_main);
+       overridePendingTransition(R.anim.slideinright,R.anim.slideinleft);
+
 
     }
     public void backButton(View v){
         setContentView(R.layout.activity_main);
+        generateInfo();
     }
 
 
     public void onUpgradeClick(View v){
         setContentView(R.layout.perm_upgrade_page);
+    }
 
+    public void generateInfo(){
+        cursorLvlText = findViewById(R.id.cursorLvl);
+        cpuLvlText = findViewById(R.id.cpuLvl);
+        ramLvlText = findViewById(R.id.ramLvl);
+
+
+        cursorLvlText.setText("Level: "+cursorLvl);
+        cpuLvlText.setText("Level: "+cpuLvl);
+        ramLvlText.setText("Level: "+ramLvl);
+    }
+
+    public Upgrade addUpgrade() {
+            if (cursorBought) {
+                Upgrade cursorUpgrade = new Upgrade("Cursor", UpgradeType.BASIC, 0.5 * cursorLvl);
+                return cursorUpgrade;
+            } else if (cpuBought) {
+                Upgrade cpuUpgrade = new Upgrade("CPU", UpgradeType.BASIC, 2 * cpuLvl);
+                return cpuUpgrade;
+            } else if (ramBought) {
+                Upgrade ramUpgrade = new Upgrade("RAM", UpgradeType.BASIC, 3 * ramLvl);
+                return ramUpgrade;
+            }
+            else{
+                return null;
+        }
     }
 
     public void onDogeCoinClick(View v){
         ImageButton dogeBtn = findViewById(R.id.dogeBtn);
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         dogeBtn.startAnimation(myAnimation);
-
-
+        masterSum = masterSum + (1*masterSum);
     }
 
     public boolean onCursorClick(View v){
-        int cursorSum = 0;
+        TextView cursorLvlText = findViewById(R.id.cursorLvl);
+        Button cursorBtn = findViewById(R.id.cursorBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        cursorBtn.startAnimation(myAnimation);
         int cost = 5;
-        float cursorMultiplier = 0.5f;
-        if(masterSum>cost){
-            cursorSum++;
+        //float cursorMultiplier = 0.5f;
+        //if(masterSum>cost){
+            cursorLvl+=1;
+            cursorLvlText.setText("Level: "+cursorLvl);
+            return cursorBought = true;
+        //}
+        //else{
+            //return cursorBought = false;
+        //}
+
+    }
+
+    public boolean onCPUClick(View v){
+        TextView cpuLvlText = findViewById(R.id.cpuLvl);
+        Button cpuBtn = findViewById(R.id.cpuBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        cpuBtn.startAnimation(myAnimation);
+        int cost = 100;
+        //float cpuMultiplier = 2f;
+        //if(masterSum>cost){
+            cpuLvl+=1;
+            cpuLvlText.setText("Level:"+cpuLvl);
+            return  cpuBought = true;
+        //}
+        //else{
+        //    return cpuBought = false;
+        //}
+
+    }
+    public boolean onRAMClick(View v) {
+        TextView ramLvlText = findViewById(R.id.ramLvl);
+        Button ramBtn = findViewById(R.id.ramBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        ramBtn.startAnimation(myAnimation);
+        int cost = 5;
+        //float ramMultiplier = 3f;
+        //if (masterSum > cost) {
+            ramLvl += 1;
+            ramLvlText.setText("Level:"+ramLvl);
             return true;
-            /*TODO Change text for the cursor sum. Also create calculation that increases the cost
-            according to how many updates were already bought.
-             */
-        }
-        else{
-            return false;
-        }
+        //} else {
+            //uwu
+        //    return false;
+        //}
 
-
-    }
-
-    public void onCPUClick(View v){
-            /*TODO Change text for the CPU sum. Also create calculation that increases the cost
-            according to how many updates were already bought.
-             */
-    }
-    public void onRAMClick(View v){
-        /*TODO Change text for the RAM sum. Also create calculation that increases the cost
-            according to how many updates were already bought.
-             */
     }
 }
