@@ -20,10 +20,12 @@ public class MainActivity extends AppCompatActivity {
     static int cursorLvl = 0;
     static int ramLvl = 0;
     static int cpuLvl = 0;
+    static int skillPointSum = 20;
     boolean cursorBought = false;
     boolean cpuBought = false;
     boolean ramBought = false;
 
+    TextView skillPointTxt;
     TextView cursorLvlText;
     TextView ramLvlText;
     TextView cpuLvlText;
@@ -45,15 +47,22 @@ public class MainActivity extends AppCompatActivity {
     }
     public void backButton(View v){
         setContentView(R.layout.activity_main);
-        generateInfo();
+        generateGameInfo();
     }
 
 
     public void onUpgradeClick(View v){
         setContentView(R.layout.perm_upgrade_page);
+        generateUpdateInfo();
     }
 
-    public void generateInfo(){
+    public void generateUpdateInfo(){
+        skillPointTxt = findViewById(R.id.skillPointTxt);
+        skillPointTxt.setText("Skill Points: "+MainActivity.skillPointSum);
+    }
+
+
+    public void generateGameInfo(){
         cursorLvlText = findViewById(R.id.cursorLvl);
         cpuLvlText = findViewById(R.id.cpuLvl);
         ramLvlText = findViewById(R.id.ramLvl);
@@ -63,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         cpuLvlText.setText("Level: "+cpuLvl);
         ramLvlText.setText("Level: "+ramLvl);
     }
+
 
     public Upgrade addUpgrade() {
             if (cursorBought) {

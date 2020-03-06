@@ -12,6 +12,7 @@ import java.util.Random;
 public class ClickManager {
 
     MainActivity gameActivity = new MainActivity();
+    static int skillPointSum = 0;
     public float coinSum = 0;
     public float masterMultiplyer = 0f;
     public PC currentPC;
