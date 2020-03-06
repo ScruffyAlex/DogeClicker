@@ -21,6 +21,12 @@ public class MainActivity extends AppCompatActivity {
     static int ramLvl = 0;
     static int cpuLvl = 0;
     static int skillPointSum = 20;
+
+    public int cursorCost = 15;
+    public int cpuCost = 150;
+    public int ramCost = 1500;
+
+
     boolean cursorBought = false;
     boolean cpuBought = false;
     boolean ramBought = false;

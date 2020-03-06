@@ -12,6 +12,9 @@ import org.w3c.dom.Text;
 
 public class PermUpgradePage extends AppCompatActivity {
 
+   public int upgradeCost = 1;
+   public int prestigeCost = 99999;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +26,7 @@ public class PermUpgradePage extends AppCompatActivity {
     }
 
     public void onWifiClick(View v) {
-
+        if(MainActivity.masterSum>)
     }
 
     public void onElectricityClick(View v) {
