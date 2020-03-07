@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     public void applyUpgrades(){
         for(int i=0;i<upgradeList.size();i++){
             masterMult += upgradeList.get(i).getMultiplier();
+            masterMultTxt.setText("Multiplier: "+masterMult);
         }
     }
 
