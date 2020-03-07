@@ -79,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.366"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/masterMultiplier" />
+        app:layout_constraintTop_toBottomOf="@+id/masterMultiplierTxt" />
 
     <TextView
         android:id="@+id/masterSumTxt"
@@ -93,14 +93,14 @@
         android:text="Coins: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/masterMultiplier"
+        app:layout_constraintBottom_toTopOf="@+id/masterMultiplierTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/masterMultiplier"
+        android:id="@+id/masterMultiplierTxt"
         android:layout_width="392dp"
         android:layout_height="25dp"
         android:layout_marginStart="178dp"

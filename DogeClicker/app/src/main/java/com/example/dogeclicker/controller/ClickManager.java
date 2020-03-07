@@ -19,21 +19,12 @@ public class ClickManager {
     public Event currentEvent;
     public ArrayList<Upgrade> upgrades = new ArrayList<>();
 
-    public void run(){
-
-    }
 
     public int randomNumber(int min,int max){
         Random rng = new Random();
         int upperBound = max-min+1;
         return rng.nextInt(upperBound)+min;
     }
-
-    public int coinCounter(){
-
-        return 0;
-    }
-
 
 
     public boolean removeUpgrade(){
@@ -131,21 +122,6 @@ public class ClickManager {
 
                 return currentEvent.getEffect();
     }
-
-    public float click(){
-
-        return 0f;
-    }
-
-    public float autoClick(){
-        return 0f;
-    }
-
-
-
-
-
-
 
 
 }

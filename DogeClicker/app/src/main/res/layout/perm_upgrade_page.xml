@@ -122,17 +122,18 @@
         android:id="@+id/backBtn"
         android:layout_width="126dp"
         android:layout_height="66dp"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="49dp"
-        android:layout_marginEnd="278dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="41dp"
         android:fontFamily="@font/delius_unicase"
         android:onClick="backButton"
         android:text="back"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/chanceCostTxt"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/skillPointTxt"
@@ -222,4 +223,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/electricityLvl3" />
+
+    <Button
+        android:id="@+id/eventBtn"
+        android:layout_width="109dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="37dp"
+        android:text="Chance"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chanceCostTxt"
+        app:layout_constraintTop_toBottomOf="@+id/electricitySkill3" />
+
+    <TextView
+        android:id="@+id/chanceCostTxt"
+        android:layout_width="114dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="53dp"
+        android:fontFamily="@font/delius_unicase"
+        android:text="Skill Cost:"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/eventBtn"
+        app:layout_constraintStart_toEndOf="@+id/backBtn"
+        app:layout_constraintTop_toBottomOf="@+id/electricitySkill3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
