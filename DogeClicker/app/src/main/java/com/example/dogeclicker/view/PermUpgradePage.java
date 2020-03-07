@@ -11,11 +11,6 @@ import com.example.dogeclicker.models.PCType;
 import com.example.dogeclicker.models.Upgrade;
 import com.example.dogeclicker.models.UpgradeType;
 
-import org.w3c.dom.Text;
-
-import static com.example.dogeclicker.view.MainActivity.cpuLvl;
-import static com.example.dogeclicker.view.MainActivity.cursorLvl;
-
 public class PermUpgradePage extends AppCompatActivity {
 
     TextView skillPointTxt;
@@ -98,13 +93,13 @@ public class PermUpgradePage extends AppCompatActivity {
 
     public Upgrade addUpgrade() {
         if (wifiBought) {
-            Upgrade wifiUpgrade = new Upgrade("Wifi", UpgradeType.PERNAMENT, wifiMult);
+            Upgrade wifiUpgrade = new Upgrade("Wifi", UpgradeType.PERMANENT, wifiMult);
             return wifiUpgrade;
         } else if (electricityBought) {
-            Upgrade electricityUpgrade = new Upgrade("Electricity", UpgradeType.PERNAMENT, electricityMult);
+            Upgrade electricityUpgrade = new Upgrade("Electricity", UpgradeType.PERMANENT, electricityMult);
             return electricityUpgrade;
         } else if (miningPoolBought) {
-            Upgrade  miningUpgrade = new Upgrade("MiningPool", UpgradeType.PERNAMENT, miningMult);
+            Upgrade  miningUpgrade = new Upgrade("MiningPool", UpgradeType.PERMANENT, miningMult);
             return miningUpgrade;
         }
         else{
