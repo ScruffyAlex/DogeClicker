@@ -16,6 +16,7 @@ import com.example.dogeclicker.models.UpgradeType;
 
 public class MainActivity extends AppCompatActivity {
     static float masterSum =0;
+    static float masterMult = 1;
     float coinSum = 0;
     static int cursorLvl = 0;
     static int ramLvl = 0;
@@ -102,8 +103,10 @@ public class MainActivity extends AppCompatActivity {
     public void onDogeCoinClick(View v){
         ImageButton dogeBtn = findViewById(R.id.dogeBtn);
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        coinTotal = findViewById(R.id.coinTotal);
         dogeBtn.startAnimation(myAnimation);
-        masterSum = masterSum + (1*masterSum);
+        masterSum = masterSum + (1*masterMult);
+        coinTotal.setText("Coins: "+masterSum);
     }
 
     public boolean onCursorClick(View v){
