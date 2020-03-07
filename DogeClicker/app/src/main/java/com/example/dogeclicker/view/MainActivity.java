@@ -17,7 +17,6 @@ import com.example.dogeclicker.models.UpgradeType;
 public class MainActivity extends AppCompatActivity {
     static float masterSum =0;
     static float masterMult = 1;
-    float coinSum = 0;
     static int cursorLvl = 0;
     static int ramLvl = 0;
     static int cpuLvl = 0;
@@ -36,8 +35,12 @@ public class MainActivity extends AppCompatActivity {
     TextView cursorLvlText;
     TextView ramLvlText;
     TextView cpuLvlText;
-    TextView coinTotal;
+    TextView masterSumTxt;
     TextView multiplyerTotal;
+
+    TextView ramCostTxt;
+    TextView cpuCostTxt;
+    TextView cursorCostTxt;
 
 
     @Override
@@ -76,11 +79,24 @@ public class MainActivity extends AppCompatActivity {
         cursorLvlText = findViewById(R.id.cursorLvl);
         cpuLvlText = findViewById(R.id.cpuLvl);
         ramLvlText = findViewById(R.id.ramLvl);
+        masterSumTxt = findViewById(R.id.masterSumTxt);
 
+        ramCostTxt = findViewById(R.id.ramCost);
+        cpuCostTxt = findViewById(R.id.cpuCost);
+        cursorCostTxt = findViewById(R.id.cursorCost);
 
         cursorLvlText.setText("Level: "+cursorLvl);
         cpuLvlText.setText("Level: "+cpuLvl);
         ramLvlText.setText("Level: "+ramLvl);
+        masterSumTxt.setText("Coins:"+masterSum);
+
+        ramCostTxt.setText("Cost: "+ramCost);
+        cpuCostTxt.setText("Cost: "+cpuCost);
+        cursorCostTxt.setText("Cost: "+cursorCost);
+
+
+
+
     }
 
 
@@ -103,10 +119,10 @@ public class MainActivity extends AppCompatActivity {
     public void onDogeCoinClick(View v){
         ImageButton dogeBtn = findViewById(R.id.dogeBtn);
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
-        coinTotal = findViewById(R.id.coinTotal);
+        masterSumTxt = findViewById(R.id.masterSumTxt);
         dogeBtn.startAnimation(myAnimation);
         masterSum = masterSum + (1*masterMult);
-        coinTotal.setText("Coins: "+masterSum);
+        masterSumTxt.setText("Coins: "+masterSum);
     }
 
     public boolean onCursorClick(View v){
@@ -115,15 +131,16 @@ public class MainActivity extends AppCompatActivity {
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         cursorBtn.startAnimation(myAnimation);
         int cost = 5;
-        //float cursorMultiplier = 0.5f;
-        //if(masterSum>cost){
+        float cursorMultiplier = 0.5f;
+        if(masterSum>cost){
             cursorLvl+=1;
             cursorLvlText.setText("Level: "+cursorLvl);
+            updateCoinsSum(masterSum,cursorCost);
             return cursorBought = true;
-        //}
-        //else{
-            //return cursorBought = false;
-        //}
+        }
+        else{
+            return cursorBought = false;
+        }
 
     }
 
@@ -132,16 +149,17 @@ public class MainActivity extends AppCompatActivity {
         Button cpuBtn = findViewById(R.id.cpuBtn);
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         cpuBtn.startAnimation(myAnimation);
-        int cost = 100;
-        //float cpuMultiplier = 2f;
-        //if(masterSum>cost){
+
+        float cpuMultiplier = 2f;
+        if(masterSum>cpuCost){
             cpuLvl+=1;
             cpuLvlText.setText("Level:"+cpuLvl);
+            updateCoinsSum(masterSum,cpuCost);
             return  cpuBought = true;
-        //}
-        //else{
-        //    return cpuBought = false;
-        //}
+        }
+        else{
+            return cpuBought = false;
+        }
 
     }
     public boolean onRAMClick(View v) {
@@ -149,16 +167,19 @@ public class MainActivity extends AppCompatActivity {
         Button ramBtn = findViewById(R.id.ramBtn);
         Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
         ramBtn.startAnimation(myAnimation);
-        int cost = 5;
-        //float ramMultiplier = 3f;
-        //if (masterSum > cost) {
+        float ramMultiplier = 3f;
+        if (masterSum > ramCost) {
             ramLvl += 1;
             ramLvlText.setText("Level:"+ramLvl);
+            updateCoinsSum(masterSum,ramCost);
             return true;
-        //} else {
-            //uwu
-        //    return false;
-        //}
+        } else {
+            return false;
+        }
+    }
 
+    public void updateCoinsSum(float coinSum, int cost){
+        masterSum = coinSum-cost;
+        masterSumTxt.setText("Coins:"+ masterSum);
     }
 }
