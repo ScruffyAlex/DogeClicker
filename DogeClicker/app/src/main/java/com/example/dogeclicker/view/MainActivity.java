@@ -132,13 +132,7 @@ public class MainActivity extends AppCompatActivity {
         masterMultTxt = findViewById(R.id.masterMultiplierTxt);
         dogeBtn.startAnimation(myAnimation);
 
-        if(upgradeList.isEmpty()){
-            masterSum = masterSum + (1*masterMult);
-        }
-        else{
-         applyUpgrades();
-         masterSum = masterSum+(1*masterMult);
-        }
+        masterSum = masterSum + (1*masterMult);
 
         masterSumTxt.setText("Coins: "+masterSum);
         masterMultTxt.setText("Multiplier: "+masterMult);
@@ -158,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
             cpuBought = false;
             ramBought = false;
             upgradeList.add(addUpgrade());
+            applyUpgrades();
             return cursorBought;
         }
         else{
@@ -181,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
             cursorBought = false;
             cpuBought = true;
             upgradeList.add(addUpgrade());
+            applyUpgrades();
             return  cpuBought;
 
         }
@@ -203,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
             cursorBought=false;
             ramBought = true;
             upgradeList.add(addUpgrade());
+            applyUpgrades();
             return ramBought;
         } else {
             return ramBought;
