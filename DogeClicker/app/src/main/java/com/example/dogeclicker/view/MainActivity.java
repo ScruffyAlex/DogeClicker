@@ -172,7 +172,8 @@ public class MainActivity extends AppCompatActivity {
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         cpuBtn.startAnimation(myAnimation);
 
-        if(masterSum>cpuCost){
+        float cpuMultiplier = 2f;
+        if(masterSum>=cpuCost){
             cpuLvl+=1;
             cpuLvlText.setText("Level:"+cpuLvl);
             updateCoinsSum(masterSum,cpuCost);
@@ -193,7 +194,8 @@ public class MainActivity extends AppCompatActivity {
         Button ramBtn = findViewById(R.id.ramBtn);
         Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
         ramBtn.startAnimation(myAnimation);
-        if (masterSum > ramCost) {
+        float ramMultiplier = 3f;
+        if (masterSum >= ramCost) {
             ramLvl += 1;
             ramLvlText.setText("Level:"+ramLvl);
             updateCoinsSum(masterSum,ramCost);
