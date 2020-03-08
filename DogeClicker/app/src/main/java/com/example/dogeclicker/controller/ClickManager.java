@@ -1,5 +1,6 @@
 package com.example.dogeclicker.controller;
 
+import com.example.dogeclicker.R;
 import com.example.dogeclicker.models.Event;
 import com.example.dogeclicker.models.PC;
 import com.example.dogeclicker.models.Upgrade;
@@ -18,6 +19,8 @@ public class ClickManager {
     public PC currentPC;
     public Event currentEvent;
     public ArrayList<Upgrade> upgrades = new ArrayList<>();
+
+    public int icon[] = {R.drawable.hamomn};
 
 
     public int randomNumber(int min,int max){
