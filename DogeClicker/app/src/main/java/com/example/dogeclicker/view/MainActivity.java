@@ -7,9 +7,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dogeclicker.R;
+import com.example.dogeclicker.controller.ClickManager;
 import com.example.dogeclicker.models.Upgrade;
 import com.example.dogeclicker.models.UpgradeType;
 
@@ -20,12 +22,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    ClickManager currentClicker = new ClickManager();
+
     static float masterSum =0;
     static float masterMult = 1;
     static int cursorLvl = 0;
     static int ramLvl = 0;
     static int cpuLvl = 0;
     static int skillPointSum = 20;
+    static int clickAmount = 0;
 
     ArrayList<Upgrade> upgradeList = new ArrayList<>();
 
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     boolean cpuBought = false;
     boolean ramBought = false;
 
+    ImageView dogeView;
     TextView ramCostTxt;
     TextView cpuCostTxt;
     TextView cursorCostTxt;
@@ -73,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         masterSumTxt = findViewById(R.id.masterSumTxt);
         masterMultTxt = findViewById(R.id.masterMultiplierTxt);
+        dogeView = findViewById(R.id.dogeView);
 
 
 
@@ -82,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
         masterSumTxt.setText("Coins: "+masterSum);
         masterMultTxt.setText("Multiplier: "+masterMult);
+        clickAmount++;
+        changeImage(currentClicker.randomNumber(1,currentClicker.icon.length));
 
 
 
@@ -243,5 +252,20 @@ public class MainActivity extends AppCompatActivity {
         finalCost=currentCost/100*percentToIncreaseBy;
         return finalCost;
     }
+
+    public void changeImage(int ranImageIndex){
+        dogeView.findViewById(R.id.dogeView);
+
+        if(clickAmount>=200) {
+            dogeView.setImageResource(currentClicker.icon[ranImageIndex]);
+            clickAmount=0;}
+        else{
+
+        }
+
+    }
+
+
+
 
 }
