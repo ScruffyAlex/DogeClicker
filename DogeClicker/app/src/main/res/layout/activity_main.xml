@@ -127,7 +127,7 @@
         android:text="Level: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/ramCost"
+        app:layout_constraintBottom_toTopOf="@+id/ramCostTxt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dogeBtn" />
 
@@ -143,7 +143,7 @@
         android:text="Level: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/cpuCost"
+        app:layout_constraintBottom_toTopOf="@+id/cpuCostTxt"
         app:layout_constraintEnd_toStartOf="@+id/cursorLvl"
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toEndOf="@+id/ramLvl"
@@ -161,7 +161,7 @@
         android:text="Level: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/cursorCost"
+        app:layout_constraintBottom_toTopOf="@+id/cursorCostTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dogeBtn" />
 
@@ -180,7 +180,7 @@
         app:srcCompat="@drawable/hamomn" />
 
     <TextView
-        android:id="@+id/ramCost"
+        android:id="@+id/ramCostTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -195,7 +195,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/cpuCost"
+        android:id="@+id/cpuCostTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -204,12 +204,12 @@
         android:text="Cost: 150"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/cpuBtn"
-        app:layout_constraintEnd_toStartOf="@+id/cursorCost"
+        app:layout_constraintEnd_toStartOf="@+id/cursorCostTxt"
         app:layout_constraintHorizontal_bias="0.348"
-        app:layout_constraintStart_toEndOf="@+id/ramCost" />
+        app:layout_constraintStart_toEndOf="@+id/ramCostTxt" />
 
     <TextView
-        android:id="@+id/cursorCost"
+        android:id="@+id/cursorCostTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

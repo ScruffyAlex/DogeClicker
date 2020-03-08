@@ -15,8 +15,11 @@ import com.example.dogeclicker.models.UpgradeType;
 
 import java.util.ArrayList;
 
+//total/100 * percentage number
+
 
 public class MainActivity extends AppCompatActivity {
+
     static float masterSum =0;
     static float masterMult = 1;
     static int cursorLvl = 0;
@@ -35,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
     boolean cpuBought = false;
     boolean ramBought = false;
 
+    TextView ramCostTxt;
+    TextView cpuCostTxt;
+    TextView cursorCostTxt;
+
     TextView skillPointTxt;
     TextView cursorLvlText;
     TextView ramLvlText;
@@ -42,9 +49,6 @@ public class MainActivity extends AppCompatActivity {
     TextView masterSumTxt;
     TextView masterMultTxt;
 
-    TextView ramCostTxt;
-    TextView cpuCostTxt;
-    TextView cursorCostTxt;
 
 
     @Override
@@ -62,6 +66,107 @@ public class MainActivity extends AppCompatActivity {
     public void backButton(View v){
         setContentView(R.layout.activity_main);
         generateGameInfo();
+    }
+
+    public void onDogeCoinClick(View v){
+        ImageButton dogeBtn = findViewById(R.id.dogeBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        masterSumTxt = findViewById(R.id.masterSumTxt);
+        masterMultTxt = findViewById(R.id.masterMultiplierTxt);
+
+
+
+        dogeBtn.startAnimation(myAnimation);
+
+        masterSum = masterSum + (1*masterMult);
+
+        masterSumTxt.setText("Coins: "+masterSum);
+        masterMultTxt.setText("Multiplier: "+masterMult);
+
+
+
+    }
+
+    public boolean onCursorClick(View v){
+        TextView cpuLvlText = findViewById(R.id.cursorLvl);
+        TextView cursorCostTxt = findViewById(R.id.cursorCostTxt);
+        Button cpuBtn = findViewById(R.id.cursorBtn);
+
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        cpuBtn.startAnimation(myAnimation);
+
+        if(masterSum>=cursorCost){
+            cursorLvl+=1;
+            cpuLvlText.setText("Level:"+cursorLvl);
+            updateCoinsSum(masterSum,cursorCost);
+            ramBought = false;
+            cursorBought = true;
+            cpuBought = false;
+
+            cursorCost = cursorCost+((cursorCost+5)/100+20);
+            cursorCostTxt.setText("Cost: "+cursorCost);
+            upgradeList.add(addUpgrade());
+
+            applyUpgrades();
+            return  cursorBought;
+
+        }
+        else{
+            return cursorBought;
+        }
+
+    }
+
+    public boolean onCPUClick(View v){
+        TextView cpuLvlText = findViewById(R.id.cpuLvl);
+        Button cpuBtn = findViewById(R.id.cpuBtn);
+        cpuCostTxt = findViewById(R.id.cpuCostTxt);
+
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        cpuBtn.startAnimation(myAnimation);
+
+        if(masterSum>=cpuCost){
+            cpuLvl+=1;
+            cpuLvlText.setText("Level:"+cpuLvl);
+            updateCoinsSum(masterSum,cpuCost);
+            ramBought = false;
+            cursorBought = false;
+            cpuBought = true;
+
+            cpuCost = cpuCost+ (updateCost(cpuCost,50));
+            cpuCostTxt.setText("Cost: "+cpuCost);
+            upgradeList.add(addUpgrade());
+
+            applyUpgrades();
+            return  cpuBought;
+
+        }
+        else{
+            return cpuBought = false;
+        }
+
+    }
+    public boolean onRAMClick(View v) {
+        TextView ramLvlText = findViewById(R.id.ramLvl);
+        Button ramBtn = findViewById(R.id.ramBtn);
+        ramCostTxt = findViewById(R.id.ramCostTxt);
+        Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        ramBtn.startAnimation(myAnimation);
+        if (masterSum >= ramCost) {
+            ramLvl += 1;
+            ramLvlText.setText("Level:"+ramLvl);
+            updateCoinsSum(masterSum,ramCost);
+            cpuBought = false;
+            cursorBought=false;
+            ramBought = true;
+            ramCost = ramCost+ updateCost(ramCost,100);
+            ramCostTxt.setText("Cost: "+ramCost);
+            upgradeList.add(addUpgrade());
+            applyUpgrades();
+            return ramBought;
+        } else {
+            return ramBought;
+        }
     }
 
 
@@ -86,9 +191,9 @@ public class MainActivity extends AppCompatActivity {
         masterSumTxt = findViewById(R.id.masterSumTxt);
         masterMultTxt = findViewById(R.id.masterMultiplierTxt);
 
-        ramCostTxt = findViewById(R.id.ramCost);
-        cpuCostTxt = findViewById(R.id.cpuCost);
-        cursorCostTxt = findViewById(R.id.cursorCost);
+        ramCostTxt = findViewById(R.id.ramCostTxt);
+        cpuCostTxt = findViewById(R.id.cpuCostTxt);
+        cursorCostTxt = findViewById(R.id.cursorCostTxt);
 
         cursorLvlText.setText("Level: "+cursorLvl);
         cpuLvlText.setText("Level: "+cpuLvl);
@@ -126,89 +231,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onDogeCoinClick(View v){
-        ImageButton dogeBtn = findViewById(R.id.dogeBtn);
-        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
-        masterSumTxt = findViewById(R.id.masterSumTxt);
-        masterMultTxt = findViewById(R.id.masterMultiplierTxt);
-        dogeBtn.startAnimation(myAnimation);
 
-        masterSum = masterSum + (1*masterMult);
-
-        masterSumTxt.setText("Coins: "+masterSum);
-        masterMultTxt.setText("Multiplier: "+masterMult);
-    }
-
-    public boolean onCursorClick(View v){
-        TextView cursorLvlText = findViewById(R.id.cursorLvl);
-        Button cursorBtn = findViewById(R.id.cursorBtn);
-        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
-        cursorBtn.startAnimation(myAnimation);
-        int cost = 5;
-        if(masterSum>cost){
-            cursorLvl+=1;
-            cursorLvlText.setText("Level: "+cursorLvl);
-            updateCoinsSum(masterSum,cursorCost);
-            cursorBought = true;
-            cpuBought = false;
-            ramBought = false;
-            upgradeList.add(addUpgrade());
-            applyUpgrades();
-            return cursorBought;
-        }
-        else{
-            return cursorBought;
-        }
-
-    }
-
-    public boolean onCPUClick(View v){
-        TextView cpuLvlText = findViewById(R.id.cpuLvl);
-        Button cpuBtn = findViewById(R.id.cpuBtn);
-        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
-        cpuBtn.startAnimation(myAnimation);
-
-        float cpuMultiplier = 2f;
-        if(masterSum>=cpuCost){
-            cpuLvl+=1;
-            cpuLvlText.setText("Level:"+cpuLvl);
-            updateCoinsSum(masterSum,cpuCost);
-            ramBought = false;
-            cursorBought = false;
-            cpuBought = true;
-            upgradeList.add(addUpgrade());
-            applyUpgrades();
-            return  cpuBought;
-
-        }
-        else{
-            return cpuBought = false;
-        }
-
-    }
-    public boolean onRAMClick(View v) {
-        TextView ramLvlText = findViewById(R.id.ramLvl);
-        Button ramBtn = findViewById(R.id.ramBtn);
-        Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
-        ramBtn.startAnimation(myAnimation);
-        float ramMultiplier = 3f;
-        if (masterSum >= ramCost) {
-            ramLvl += 1;
-            ramLvlText.setText("Level:"+ramLvl);
-            updateCoinsSum(masterSum,ramCost);
-            cpuBought = false;
-            cursorBought=false;
-            ramBought = true;
-            upgradeList.add(addUpgrade());
-            applyUpgrades();
-            return ramBought;
-        } else {
-            return ramBought;
-        }
-    }
 
     public void updateCoinsSum(float coinSum, int cost){
         masterSum = coinSum-cost;
         masterSumTxt.setText("Coins:"+ masterSum);
     }
+
+    public int updateCost(int currentCost,int percentToIncreaseBy){
+        int finalCost;
+        finalCost=currentCost/100*percentToIncreaseBy;
+        return finalCost;
+    }
+
 }
