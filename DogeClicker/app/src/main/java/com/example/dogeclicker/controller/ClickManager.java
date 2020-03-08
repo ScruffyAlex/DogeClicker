@@ -1,5 +1,7 @@
 package com.example.dogeclicker.controller;
 
+import android.widget.ImageView;
+
 import com.example.dogeclicker.R;
 import com.example.dogeclicker.models.Event;
 import com.example.dogeclicker.models.PC;
@@ -12,7 +14,6 @@ import java.util.Random;
 
 public class ClickManager {
 
-    MainActivity gameActivity = new MainActivity();
     static int skillPointSum = 0;
     public float coinSum = 0;
     public float masterMultiplyer = 0f;
@@ -20,7 +21,10 @@ public class ClickManager {
     public Event currentEvent;
     public ArrayList<Upgrade> upgrades = new ArrayList<>();
 
-    public int icon[] = {R.drawable.hamomn};
+
+
+    public int icon[] = {R.drawable.d1,R.drawable.d2,R.drawable.d3,R.drawable.d4,R.drawable.d5,R.drawable.d6
+            ,R.drawable.d7,R.drawable.d8,R.drawable.d9,R.drawable.d10,R.drawable.d11};
 
 
     public int randomNumber(int min,int max){
@@ -121,10 +125,11 @@ public class ClickManager {
                     case 30:
                         break;
                 }
-
-
                 return currentEvent.getEffect();
     }
+
+
+
 
 
 }
