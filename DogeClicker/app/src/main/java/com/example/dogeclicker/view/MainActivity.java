@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             cursorBought = true;
             cpuBought = false;
 
-            cursorCost = cursorCost+ (updateCost(cursorCost));
+            cursorCost = cursorCost+((cursorCost+5)/100+20);
             cursorCostTxt.setText("Cost: "+cursorCost);
             upgradeList.add(addUpgrade());
 
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             cursorBought = false;
             cpuBought = true;
 
-            cpuCost = cpuCost+ (updateCost(cpuCost));
+            cpuCost = cpuCost+ (updateCost(cpuCost,50));
             cpuCostTxt.setText("Cost: "+cpuCost);
             upgradeList.add(addUpgrade());
 
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             cpuBought = false;
             cursorBought=false;
             ramBought = true;
-            ramCost = ramCost+ updateCost(ramCost);
+            ramCost = ramCost+ updateCost(ramCost,100);
             ramCostTxt.setText("Cost: "+ramCost);
             upgradeList.add(addUpgrade());
             applyUpgrades();
@@ -238,9 +238,9 @@ public class MainActivity extends AppCompatActivity {
         masterSumTxt.setText("Coins:"+ masterSum);
     }
 
-    public int updateCost(int currentCost){
+    public int updateCost(int currentCost,int percentToIncreaseBy){
         int finalCost;
-        finalCost=currentCost/100*25;
+        finalCost=currentCost/100*percentToIncreaseBy;
         return finalCost;
     }
 
