@@ -5,12 +5,14 @@ public class Event {
     private int effect;
     private String promptOfEvent;
     private boolean goodEvent;
+    private boolean isSkillPointEffect;
 
-    public Event(String name, int effect, String promptOfEvent, boolean goodEvent) {
+    public Event(String name, int effect, String promptOfEvent, boolean goodEvent,boolean isSkillPointEffect) {
         setName(name);
         setEffect(effect);
         setPromptOfEvent(promptOfEvent);
         setGoodEvent(goodEvent);
+        setAsSkillPointEffect(isSkillPointEffect);
     }
 
     public String getName() {
@@ -47,6 +49,14 @@ public class Event {
 
     public int addAmount(){
         return 0;
+    }
+
+    public boolean isSkillPointEffect() {
+        return isSkillPointEffect;
+    }
+
+    public void setAsSkillPointEffect(boolean skillPointEffect) {
+        isSkillPointEffect = skillPointEffect;
     }
 
 

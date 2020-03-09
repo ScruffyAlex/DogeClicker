@@ -12,7 +12,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ClickManager {
+public class EventManager {
 
     static int skillPointSum = 0;
     public float coinSum = 0;
@@ -34,25 +34,16 @@ public class ClickManager {
     }
 
 
-    public boolean removeUpgrade(){
-        if(upgrades.size()>0){
-            upgrades.remove(0);
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+    public Event runEvent(){
 
-    public float runEvent(){
-
-        int coinEffect = randomNumber(0,999999);
-        Event currentEvent= new Event("Test",0,"Test",false);
+       int coinEffect = randomNumber(0,9999);
                 switch(randomNumber(1,30)) {
                     case 1:
-                        currentEvent = new Event("Wild Doge!", coinEffect,"A wild doge has " +
-                                "entered your home! They left you "+coinEffect+" Doge Coins!",true);
+                         currentEvent = new Event("Wild Doge!", coinEffect,"A wild doge has " +
+                                "entered your home! They left you "+coinEffect+" Doge Coins!",true,false);
                     case 2:
+                        currentEvent = new Event("Wild Doge!", coinEffect,"A wild doge has " +
+                                "entered your home! They left you "+coinEffect+" Doge Coins!",true,true);
                         break;
                     case 3:
                         break;
@@ -61,8 +52,8 @@ public class ClickManager {
                     case 5:
                         break;
                     case 6:
-                        currentEvent = new Event("Wild Doge!", coinEffect,"A wild doge has " +
-                                "entered your home! They took "+coinEffect+" Doge Coins!",false);
+                         currentEvent = new Event("Wild Doge!", 10,"A wild doge has " +
+                                "entered your home! They took "+10+" Doge Coins!",false,false);
                         break;
                     case 7:
                         break;
@@ -74,7 +65,7 @@ public class ClickManager {
                         break;
                     case 11:
                         currentEvent = new Event("Wifi Shutdown!", coinEffect,"Your wifi has down down." +
-                                " In the process you have lost "+coinEffect+" Doge Coins!",false);
+                                " In the process you have lost "+coinEffect+" Doge Coins!",false,false);
                         break;
                     case 12:
                         break;
@@ -86,7 +77,7 @@ public class ClickManager {
                         break;
                     case 16:
                         currentEvent = new Event("Power Out!", coinEffect,"After a vicious storm " +
-                                "your power went out overnight. In the process you have lost "+coinEffect+" Doge Coins!",false);
+                                "your power went out overnight. In the process you have lost "+coinEffect+" Doge Coins!",false,false);
                         break;
                     case 17:
                         break;
@@ -94,7 +85,7 @@ public class ClickManager {
                         break;
                     case 19:
                         currentEvent = new Event("Black Hat Hacker!", coinEffect,"A Black Hat Hacker has " +
-                            "hacked into your system! You've lost "+ coinEffect+" Doge Coins!",false);
+                            "hacked into your system! You've lost "+ coinEffect+" Doge Coins!",false,false);
                         break;
                     case 20:
                         break;
@@ -104,7 +95,7 @@ public class ClickManager {
                         break;
                     case 23:
                         currentEvent = new Event("Grey Hat Hacker!", coinEffect,"A Grey Hat hacker " +
-                                "hacked into your system! Luckily it's Aiden Pearce. He's generous and gives you"+ coinEffect+" Doge Coins!",true);
+                                "hacked into your system! Luckily it's Aiden Pearce. He's generous and gives you"+ coinEffect+" Doge Coins!",true,false);
                         break;
                     case 24:
                         break;
@@ -112,20 +103,20 @@ public class ClickManager {
                         break;
                     case 26:
                         currentEvent = new Event("White Hat Hacker!", coinEffect,"A White Hat Hacker has " +
-                                "hacked into your system! You're grateful for his services but still you gotta pay up. You lose"+ coinEffect+" Doge Coins!",true);
+                                "hacked into your system! You're grateful for his services but still you gotta pay up. You lose"+ coinEffect+" Doge Coins!",true,false);
                         break;
                     case 27:
-                        break;
+                       break;
                     case 28:
                         break;
                     case 29:
                         currentEvent = new Event("Doge Coin Value!", coinEffect,"Doge Coin Value has gone up!" +
-                                "You gain"+ coinEffect+" Doge Coins!",true);
+                                " You gain"+ coinEffect+" Doge Coins!",true,false);
                         break;
                     case 30:
                         break;
                 }
-                return currentEvent.getEffect();
+                return currentEvent;
     }
 
 

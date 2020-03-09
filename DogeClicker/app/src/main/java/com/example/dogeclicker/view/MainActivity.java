@@ -1,5 +1,6 @@
 package com.example.dogeclicker.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dogeclicker.R;
-import com.example.dogeclicker.controller.ClickManager;
+import com.example.dogeclicker.controller.EventManager;
+import com.example.dogeclicker.models.Event;
 import com.example.dogeclicker.models.PCType;
 import com.example.dogeclicker.models.Upgrade;
 import com.example.dogeclicker.models.UpgradeType;
@@ -23,7 +25,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ClickManager currentClicker = new ClickManager();
+    EventManager currentEventManager = new EventManager();
 
     static int masterSum =0;
     static int masterMult = 1;
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         dogeView.findViewById(R.id.dogeView);
 
         if(clickAmount>=200) {
-            dogeView.setImageResource(currentClicker.icon[ranImageIndex]);
+            dogeView.setImageResource(currentEventManager.icon[ranImageIndex]);
             clickAmount=0;}
         else{
 
@@ -165,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         masterSumTxt.setText("Coins: "+masterSum);
         masterMultTxt.setText("Multiplier: x"+masterMult);
         clickAmount++;
-        changeImage(currentClicker.randomNumber(1,currentClicker.icon.length));
+        changeImage(currentEventManager.randomNumber(1,currentEventManager.icon.length));
 
 
 
@@ -309,7 +311,7 @@ public class MainActivity extends AppCompatActivity {
 
     //START PERM UPGRADE CLICK LOGIC
     public void onWifiClick(View v) {
-        if(MainActivity.skillPointSum>=upgradeCost){
+        if(skillPointSum>=upgradeCost){
             wifiLvlTxt = findViewById(R.id.wifiLvl);
             wifiLvl+=1;
             wifiLvlTxt.setText("Level: "+wifiLvl);
@@ -329,7 +331,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onElectricityClick(View v) {
-        if(MainActivity.skillPointSum>=upgradeCost){
+        if(skillPointSum>=upgradeCost){
             electricityLvlTxt = findViewById(R.id.electricityLvl);
             electricityLvl+=1;
             electricityLvlTxt.setText("Level: "+electricityLvl);
@@ -349,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onMiningPoolCLick(View v) {
-        if(MainActivity.skillPointSum>=upgradeCost){
+        if(skillPointSum>=upgradeCost){
             miningPoolLvlTxt = findViewById(R.id.miningLvl);
             miningLvl+=1;
             miningPoolLvlTxt.setText("Level: "+miningLvl);
@@ -369,14 +371,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onChanceClick(View v) {
-        if (MainActivity.masterSum >= prestigeCost) {
+        if (skillPointSum >= upgradeCost) {
+            skillPointSum--;
+            Event currentEvent = currentEventManager.runEvent();
+            if(currentEvent.isSkillPointEffect()){
+                if(currentEvent.isGoodEvent()) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle(currentEvent.getName());
+                    builder.setMessage(currentEvent.getPromptOfEvent());
+                    builder.show();
+                    skillPointSum+=currentEvent.getEffect();
+                }
+                else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle(currentEvent.getName());
+                    builder.setMessage(currentEvent.getPromptOfEvent());
+                    builder.show();
+                }
+
+            }
+            else{
+                if(currentEvent.isGoodEvent()){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle(currentEvent.getName());
+                    builder.setMessage(currentEvent.getPromptOfEvent());
+                    builder.show();
+                    masterSum+=currentEvent.getEffect();
+                }
+                else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle(currentEvent.getName());
+                    builder.setMessage(currentEvent.getPromptOfEvent());
+                    builder.show();
+                    updateCoinsSum(masterSum,currentEvent.getEffect());
+                }
+            }
 
 
         }
-    }
+    }//end onChanceClick
 
     public void onNextPcClick(View v) {
-        if (MainActivity.masterSum >= prestigeCost) {
+        if (masterSum >= prestigeCost) {
 
         }
     }
