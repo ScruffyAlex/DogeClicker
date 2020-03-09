@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     int electricityLvl = 0;
     int miningLvl = 0;
 
-    static int skillPointSum = 20;
+    static int skillPointSum = 3;
     static int clickAmount = 0;
 
     ArrayList<Upgrade> upgradeList = new ArrayList<>();
