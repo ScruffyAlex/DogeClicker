@@ -318,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
             electricityBought = false;
             miningPoolBought = false;
 
-            addPermUpgrade();
+            upgradeList.add(addPermUpgrade());
             applyUpgrades();
         }
         else{
@@ -338,7 +338,7 @@ public class MainActivity extends AppCompatActivity {
             wifiBought = false;
             miningPoolBought = false;
 
-            addPermUpgrade();
+            upgradeList.add(addPermUpgrade());
             applyUpgrades();
         }
         else{
@@ -358,7 +358,7 @@ public class MainActivity extends AppCompatActivity {
             electricityBought = false;
             miningPoolBought = true;
 
-            addPermUpgrade();
+            upgradeList.add(addPermUpgrade());
             applyUpgrades();
         }
         else{
