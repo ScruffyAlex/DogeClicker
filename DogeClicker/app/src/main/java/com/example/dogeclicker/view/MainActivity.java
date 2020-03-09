@@ -309,7 +309,7 @@ public class MainActivity extends AppCompatActivity {
 
     //START PERM UPGRADE CLICK LOGIC
     public void onWifiClick(View v) {
-        if(MainActivity.skillPointSum>upgradeCost){
+        if(MainActivity.skillPointSum>=upgradeCost){
             wifiLvlTxt = findViewById(R.id.wifiLvl);
             wifiLvl+=1;
             wifiLvlTxt.setText("Level: "+wifiLvl);
@@ -329,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onElectricityClick(View v) {
-        if(MainActivity.skillPointSum>upgradeCost){
+        if(MainActivity.skillPointSum>=upgradeCost){
             electricityLvlTxt = findViewById(R.id.electricityLvl);
             electricityLvl+=1;
             electricityLvlTxt.setText("Level: "+electricityLvl);
@@ -349,7 +349,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onMiningPoolCLick(View v) {
-        if(MainActivity.skillPointSum>upgradeCost){
+        if(MainActivity.skillPointSum>=upgradeCost){
             miningPoolLvlTxt = findViewById(R.id.miningLvl);
             miningLvl+=1;
             miningPoolLvlTxt.setText("Level: "+miningLvl);
@@ -369,14 +369,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onChanceClick(View v) {
-        if (MainActivity.masterSum > prestigeCost) {
+        if (MainActivity.masterSum >= prestigeCost) {
 
 
         }
     }
 
     public void onNextPcClick(View v) {
-        if (MainActivity.masterSum > prestigeCost) {
+        if (MainActivity.masterSum >= prestigeCost) {
 
         }
     }
