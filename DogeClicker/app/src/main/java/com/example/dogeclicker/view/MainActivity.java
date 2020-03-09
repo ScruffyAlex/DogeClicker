@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     ClickManager currentClicker = new ClickManager();
 
-    static float masterSum =0;
-    static float masterMult = 1;
+    static int masterSum =0;
+    static int masterMult = 1;
 
     static int cursorLvl = 0;
     static int ramLvl = 0;
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         cpuLvlText.setText("Level: "+cpuLvl);
         ramLvlText.setText("Level: "+ramLvl);
         masterSumTxt.setText("Coins:"+masterSum);
-        masterMultTxt.setText("Multiplier: "+masterMult);
+        masterMultTxt.setText("Multiplier: x"+masterMult);
 
         ramCostTxt.setText("Cost: "+ramCost);
         cpuCostTxt.setText("Cost: "+cpuCost);
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         masterSum = masterSum + (1*masterMult);
 
         masterSumTxt.setText("Coins: "+masterSum);
-        masterMultTxt.setText("Multiplier: "+masterMult);
+        masterMultTxt.setText("Multiplier: x"+masterMult);
         clickAmount++;
         changeImage(currentClicker.randomNumber(1,currentClicker.icon.length));
 
@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
     public void applyUpgrades(){
         for(int i=0;i<upgradeList.size();i++){
             masterMult += upgradeList.get(i).getMultiplier();
-            masterMultTxt.setText("Multiplier: "+masterMult);
+            masterMultTxt.setText("Multiplier: x"+masterMult);
         }
     }
 
@@ -274,13 +274,13 @@ public class MainActivity extends AppCompatActivity {
 
     public Upgrade addBasicUpgrade() {
             if (cursorBought) {
-                Upgrade cursorUpgrade = new Upgrade("Cursor", UpgradeType.BASIC, 0.1 * cursorLvl);
+                Upgrade cursorUpgrade = new Upgrade("Cursor", UpgradeType.BASIC, 1 * cursorLvl);
                 return cursorUpgrade;
             } else if (cpuBought) {
-                Upgrade cpuUpgrade = new Upgrade("CPU", UpgradeType.BASIC, 0.5 * cpuLvl);
+                Upgrade cpuUpgrade = new Upgrade("CPU", UpgradeType.BASIC, 2 * cpuLvl);
                 return cpuUpgrade;
             } else if (ramBought) {
-                Upgrade ramUpgrade = new Upgrade("RAM", UpgradeType.BASIC, 2 * ramLvl);
+                Upgrade ramUpgrade = new Upgrade("RAM", UpgradeType.BASIC, 3 * ramLvl);
                 return ramUpgrade;
             }
             else{
@@ -292,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //OVERALL UPDATE LOGIC
-    public void updateCoinsSum(float coinSum, int cost){
+    public void updateCoinsSum(int coinSum, int cost){
         masterSum = coinSum-cost;
         masterSumTxt.setText("Coins:"+ masterSum);
     }

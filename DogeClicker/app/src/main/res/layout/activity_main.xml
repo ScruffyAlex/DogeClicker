@@ -107,7 +107,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="174dp"
         android:fontFamily="@font/delius_unicase"
-        android:text="Mutilper:"
+        android:text="Multiplier: x1"
         android:textAlignment="center"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/dogeBtn"
