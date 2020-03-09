@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.dogeclicker.R;
 import com.example.dogeclicker.controller.EventManager;
 import com.example.dogeclicker.models.Event;
+import com.example.dogeclicker.models.PC;
 import com.example.dogeclicker.models.PCType;
 import com.example.dogeclicker.models.Upgrade;
 import com.example.dogeclicker.models.UpgradeType;
@@ -70,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
     TextView wifiLvlTxt;
     TextView electricityLvlTxt;
     TextView miningPoolLvlTxt;
-    TextView pcLvlTxt;
+    TextView pcTypeTxt;
+    TextView pcCostTxt;
 
     public int upgradeCost = 1;
     //double prestigeCost = 1000000000;
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     boolean chanceBought = false;
     boolean pcBought = false;
 
-    PCType currentPC = PCType.POTATO;
+    PC currentPC = new PC(PCType.POTATO);
 
 
     //VIEW LOGIC
@@ -149,11 +151,16 @@ public class MainActivity extends AppCompatActivity {
         wifiLvlTxt = findViewById(R.id.wifiTxt);
         electricityLvlTxt = findViewById(R.id.electricityLvlTxt);
         miningPoolLvlTxt = findViewById(R.id.miningLvlTxt);
+        pcTypeTxt = findViewById(R.id.pcCostTxt);
+        pcCostTxt = findViewById(R.id.pcTypeTxt);
 
         skillPointTxt.setText("Skill Points: "+MainActivity.skillPointSum);
         wifiLvlTxt.setText("Level: "+wifiLvl);
         electricityLvlTxt.setText("Level: "+electricityLvl);
         miningPoolLvlTxt.setText("Level: "+miningLvl);
+        pcCostTxt.setText("Cost: "+prestigeCost);
+
+        pcTypeTxt.setText("Type: "+currentPC.getPcType());
     }
     //END VIEW CHANGING LOGIC
 
@@ -457,9 +464,6 @@ public class MainActivity extends AppCompatActivity {
             applyUpgrades();
             out.println(upgradeList.toString());
 
-
-
-
 //            if(currentPC==PCType.POTATO){
 //                masterMult+=0;
 //            }
@@ -483,52 +487,47 @@ public class MainActivity extends AppCompatActivity {
             //15,000,000,000 gaming - mining
             //20,000,000,000 miningrig - dogeCoins
             //25,000,000,000  1,000,000,000 DogeCoins
-            if(currentPC== PCType.POTATO) {
+            if(currentPC.getPcType()== PCType.POTATO) {
                 builder.setTitle("The Cake is a Lie");
                 builder.setMessage("Throw away that cybernetic potato. You've got a Dinosaur of a computer now.");
                 builder.show();
-                currentPC = PCType.DINOSAUR;
+                currentPC.setPcType(PCType.DINOSAUR);
                 masterMult = masterMult+ 50;
                 //prestigeCost = 5000000000.0;
-                prestigeCost = 50;
-
-
+                prestigeCost = 15000;
             }
-            else if(currentPC == PCType.DINOSAUR){
+            else if(currentPC.getPcType() == PCType.DINOSAUR){
                 builder.setTitle("Ok Boomer");
                 builder.setMessage("A desktop is fine... if you were a boomer. Keep playing to get better.");
                 builder.show();
-                currentPC = PCType.DESKTOP;
+                currentPC.setPcType(PCType.DESKTOP);
                 masterMult = masterMult+ 150;
-                //prestigeCost =10000000000.0;
-                prestigeCost = 500;
+                prestigeCost =100000.0;
             }
-            else if(currentPC == PCType.DESKTOP){
+            else if(currentPC.getPcType() == PCType.DESKTOP){
                 builder.setTitle("Rise up Gamers");
                 builder.setMessage("It's Gamer time, you got a Gaming computer now!");
                 builder.show();
-                currentPC = PCType.GAMING;
+                currentPC.setPcType(PCType.GAMING);
                 masterMult = masterMult+ 200;
 
-                //prestigeCost =15000000000.0;
-                prestigeCost = 5000;
+                prestigeCost = 10000000;
 
             }
-            else if(currentPC == PCType.GAMING){
+            else if(currentPC.getPcType() == PCType.GAMING){
                 builder.setTitle("*Minecraft Noises*");
                 builder.setMessage("You've gone up to the best rig!");
                 builder.show();
-                currentPC = PCType.MININGRIG;
+                currentPC.setPcType(PCType.MININGRIG);
                 masterMult = masterMult+ 500;
-                //prestigeCost =20000000000.0;
 
                 prestigeCost = 50000;
             }
-            else if(currentPC == PCType.MININGRIG){
+            else if(currentPC.getPcType() == PCType.MININGRIG){
                 builder.setTitle("Best Build!");
                 builder.setMessage("You've got the best possible rig! Take 1,000,000 Doge coins instead!");
                 builder.show();
-                masterSum+=1000000000;
+                masterSum+=100000000;
             }
 
         }
@@ -538,6 +537,7 @@ public class MainActivity extends AppCompatActivity {
             builder.setMessage("You can't prestige yet!");
             builder.show();
         }
+        generateUpdateInfo();
     }
 
     //END PERM UPGRADE CLICK LOGIC
