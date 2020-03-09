@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public boolean onCursorClick(View v){
+    public void onCursorClick(View v){
         TextView cpuLvlText = findViewById(R.id.cursorLvl);
         TextView cursorCostTxt = findViewById(R.id.cursorCostTxt);
-        Button cpuBtn = findViewById(R.id.cursorBtn);
+        ImageButton cpuBtn = findViewById(R.id.cursorBtn);
 
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         cpuBtn.startAnimation(myAnimation);
@@ -117,18 +117,18 @@ public class MainActivity extends AppCompatActivity {
             upgradeList.add(addUpgrade());
 
             applyUpgrades();
-            return  cursorBought;
+//            return  cursorBought;
 
         }
-        else{
-            return cursorBought;
-        }
+//        else{
+//            return cursorBought;
+//        }
 
     }
 
-    public boolean onCPUClick(View v){
+    public void onCPUClick(View v){
         TextView cpuLvlText = findViewById(R.id.cpuLvl);
-        Button cpuBtn = findViewById(R.id.cpuBtn);
+        ImageButton cpuBtn = findViewById(R.id.cpuBtn);
         cpuCostTxt = findViewById(R.id.cpuCostTxt);
 
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
@@ -147,17 +147,17 @@ public class MainActivity extends AppCompatActivity {
             upgradeList.add(addUpgrade());
 
             applyUpgrades();
-            return  cpuBought;
+//            return  cpuBought;
 
         }
-        else{
-            return cpuBought = false;
-        }
+//        else{
+//            return cpuBought = false;
+//        }
 
     }
-    public boolean onRAMClick(View v) {
+    public void onRAMClick(View v) {
         TextView ramLvlText = findViewById(R.id.ramLvl);
-        Button ramBtn = findViewById(R.id.ramBtn);
+        ImageButton ramBtn = findViewById(R.id.ramBtn);
         ramCostTxt = findViewById(R.id.ramCostTxt);
         Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
         ramBtn.startAnimation(myAnimation);
@@ -172,10 +172,11 @@ public class MainActivity extends AppCompatActivity {
             ramCostTxt.setText("Cost: "+ramCost);
             upgradeList.add(addUpgrade());
             applyUpgrades();
-            return ramBought;
-        } else {
-            return ramBought;
+//            return ramBought;
         }
+//        else {
+//            return ramBought;
+//        }
     }
 
 
@@ -257,8 +258,9 @@ public class MainActivity extends AppCompatActivity {
         dogeView.findViewById(R.id.dogeView);
 
         if(clickAmount>=200) {
+            clickAmount=0;
             dogeView.setImageResource(currentClicker.icon[ranImageIndex]);
-            clickAmount=0;}
+            }
         else{
 
         }
