@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.dogeclicker.R;
 import com.example.dogeclicker.controller.ClickManager;
+import com.example.dogeclicker.models.PCType;
 import com.example.dogeclicker.models.Upgrade;
 import com.example.dogeclicker.models.UpgradeType;
 
@@ -24,11 +25,17 @@ public class MainActivity extends AppCompatActivity {
 
     ClickManager currentClicker = new ClickManager();
 
-    static float masterSum =0;
-    static float masterMult = 1;
+    static int masterSum =0;
+    static int masterMult = 1;
+
     static int cursorLvl = 0;
     static int ramLvl = 0;
     static int cpuLvl = 0;
+
+    int wifiLvl =0;
+    int electricityLvl = 0;
+    int miningLvl = 0;
+
     static int skillPointSum = 20;
     static int clickAmount = 0;
 
@@ -37,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     public int cursorCost = 15;
     public int cpuCost = 150;
     public int ramCost = 1500;
-
 
     boolean cursorBought = false;
     boolean cpuBought = false;
@@ -48,14 +54,37 @@ public class MainActivity extends AppCompatActivity {
     TextView cpuCostTxt;
     TextView cursorCostTxt;
 
-    TextView skillPointTxt;
     TextView cursorLvlText;
     TextView ramLvlText;
     TextView cpuLvlText;
     TextView masterSumTxt;
     TextView masterMultTxt;
 
+    //Permanent Upgrade Page
 
+    TextView skillPointTxt;
+    TextView wifiLvlTxt;
+    TextView electricityLvlTxt;
+    TextView miningPoolLvlTxt;
+    TextView pcLvlTxt;
+
+    public int upgradeCost = 1;
+    public int prestigeCost = 99999;
+
+    static int wifiMult = 20;
+    static int electricityMult = 30;
+    static int miningMult = 40;
+
+    boolean wifiBought = false;
+    boolean electricityBought = false;
+    boolean miningPoolBought = false;
+    boolean chanceBought = false;
+    boolean pcBought = false;
+
+    PCType currentPC = PCType.POTATO;
+
+
+    //VIEW LOGIC
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +103,52 @@ public class MainActivity extends AppCompatActivity {
         generateGameInfo();
     }
 
+    public void changeImage(int ranImageIndex){
+        dogeView.findViewById(R.id.dogeView);
+
+        if(clickAmount>=200) {
+            dogeView.setImageResource(currentClicker.icon[ranImageIndex]);
+            clickAmount=0;}
+        else{
+
+        }
+
+    }
+
+    public void generateGameInfo(){
+        cursorLvlText = findViewById(R.id.cursorLvl);
+        cpuLvlText = findViewById(R.id.cpuLvl);
+        ramLvlText = findViewById(R.id.ramLvl);
+        masterSumTxt = findViewById(R.id.masterSumTxt);
+        masterMultTxt = findViewById(R.id.masterMultiplierTxt);
+
+        ramCostTxt = findViewById(R.id.ramCostTxt);
+        cpuCostTxt = findViewById(R.id.cpuCostTxt);
+        cursorCostTxt = findViewById(R.id.cursorCostTxt);
+
+        cursorLvlText.setText("Level: "+cursorLvl);
+        cpuLvlText.setText("Level: "+cpuLvl);
+        ramLvlText.setText("Level: "+ramLvl);
+        masterSumTxt.setText("Coins:"+masterSum);
+        masterMultTxt.setText("Multiplier: x"+masterMult);
+
+        ramCostTxt.setText("Cost: "+ramCost);
+        cpuCostTxt.setText("Cost: "+cpuCost);
+        cursorCostTxt.setText("Cost: "+cursorCost);
+
+    }
+
+    public void generateUpdateInfo(){
+        skillPointTxt = findViewById(R.id.skillPointTxt);
+        skillPointTxt.setText("Skill Points: "+MainActivity.skillPointSum);
+    }
+
+    //END VIEW CHANGING LOGIC
+
+
+
+
+    //MAIN GAME BUTTON CLICK LOGIC
     public void onDogeCoinClick(View v){
         ImageButton dogeBtn = findViewById(R.id.dogeBtn);
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
@@ -88,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         masterSum = masterSum + (1*masterMult);
 
         masterSumTxt.setText("Coins: "+masterSum);
-        masterMultTxt.setText("Multiplier: "+masterMult);
+        masterMultTxt.setText("Multiplier: x"+masterMult);
         clickAmount++;
         changeImage(currentClicker.randomNumber(1,currentClicker.icon.length));
 
@@ -114,15 +189,14 @@ public class MainActivity extends AppCompatActivity {
 
             cursorCost = cursorCost+((cursorCost+5)/100+20);
             cursorCostTxt.setText("Cost: "+cursorCost);
-            upgradeList.add(addUpgrade());
+            upgradeList.add(addBasicUpgrade());
 
             applyUpgrades();
-//            return  cursorBought;
 
         }
-//        else{
-//            return cursorBought;
-//        }
+        else{
+            cursorBought = false;
+        }
 
     }
 
@@ -142,17 +216,15 @@ public class MainActivity extends AppCompatActivity {
             cursorBought = false;
             cpuBought = true;
 
-            cpuCost = cpuCost+ (updateCost(cpuCost,50));
+            cpuCost = cpuCost+ (updateCost(cpuCost,20));
             cpuCostTxt.setText("Cost: "+cpuCost);
-            upgradeList.add(addUpgrade());
-
+            upgradeList.add(addBasicUpgrade());
             applyUpgrades();
-//            return  cpuBought;
 
         }
-//        else{
-//            return cpuBought = false;
-//        }
+        else{
+            cpuBought = false;
+        }
 
     }
     public void onRAMClick(View v) {
@@ -168,16 +240,18 @@ public class MainActivity extends AppCompatActivity {
             cpuBought = false;
             cursorBought=false;
             ramBought = true;
-            ramCost = ramCost+ updateCost(ramCost,100);
+            ramCost = ramCost+ updateCost(ramCost,35);
             ramCostTxt.setText("Cost: "+ramCost);
-            upgradeList.add(addUpgrade());
+            upgradeList.add(addBasicUpgrade());
             applyUpgrades();
-//            return ramBought;
+        } else {
+            ramBought=false;
         }
 //        else {
 //            return ramBought;
 //        }
     }
+
 
 
     public void onUpgradeClick(View v){
@@ -188,52 +262,28 @@ public class MainActivity extends AppCompatActivity {
         generateUpdateInfo();
     }
 
-    public void generateUpdateInfo(){
-        skillPointTxt = findViewById(R.id.skillPointTxt);
-        skillPointTxt.setText("Skill Points: "+MainActivity.skillPointSum);
-    }
-
-
-    public void generateGameInfo(){
-        cursorLvlText = findViewById(R.id.cursorLvl);
-        cpuLvlText = findViewById(R.id.cpuLvl);
-        ramLvlText = findViewById(R.id.ramLvl);
-        masterSumTxt = findViewById(R.id.masterSumTxt);
-        masterMultTxt = findViewById(R.id.masterMultiplierTxt);
-
-        ramCostTxt = findViewById(R.id.ramCostTxt);
-        cpuCostTxt = findViewById(R.id.cpuCostTxt);
-        cursorCostTxt = findViewById(R.id.cursorCostTxt);
-
-        cursorLvlText.setText("Level: "+cursorLvl);
-        cpuLvlText.setText("Level: "+cpuLvl);
-        ramLvlText.setText("Level: "+ramLvl);
-        masterSumTxt.setText("Coins:"+masterSum);
-        masterMultTxt.setText("Multiplier: "+masterMult);
-
-        ramCostTxt.setText("Cost: "+ramCost);
-        cpuCostTxt.setText("Cost: "+cpuCost);
-        cursorCostTxt.setText("Cost: "+cursorCost);
-
-    }
+    //OVERALL UPGRADE LOGIC
 
     public void applyUpgrades(){
         for(int i=0;i<upgradeList.size();i++){
             masterMult += upgradeList.get(i).getMultiplier();
-            masterMultTxt.setText("Multiplier: "+masterMult);
+            masterMultTxt.setText("Multiplier: x"+masterMult);
         }
     }
 
+    //END OVERALL UPGRADE LOGIC
 
-    public Upgrade addUpgrade() {
+    //BASIC UPGRADE LOGIC
+
+    public Upgrade addBasicUpgrade() {
             if (cursorBought) {
-                Upgrade cursorUpgrade = new Upgrade("Cursor", UpgradeType.BASIC, 0.1 * cursorLvl);
+                Upgrade cursorUpgrade = new Upgrade("Cursor", UpgradeType.BASIC, 1 * cursorLvl);
                 return cursorUpgrade;
             } else if (cpuBought) {
-                Upgrade cpuUpgrade = new Upgrade("CPU", UpgradeType.BASIC, 0.5 * cpuLvl);
+                Upgrade cpuUpgrade = new Upgrade("CPU", UpgradeType.BASIC, 2 * cpuLvl);
                 return cpuUpgrade;
             } else if (ramBought) {
-                Upgrade ramUpgrade = new Upgrade("RAM", UpgradeType.BASIC, 2 * ramLvl);
+                Upgrade ramUpgrade = new Upgrade("RAM", UpgradeType.BASIC, 3 * ramLvl);
                 return ramUpgrade;
             }
             else{
@@ -241,9 +291,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //END BASIC UPGRADE LOGIC
 
 
-    public void updateCoinsSum(float coinSum, int cost){
+    //OVERALL UPDATE LOGIC
+    public void updateCoinsSum(int coinSum, int cost){
         masterSum = coinSum-cost;
         masterSumTxt.setText("Coins:"+ masterSum);
     }
@@ -254,20 +306,112 @@ public class MainActivity extends AppCompatActivity {
         return finalCost;
     }
 
-    public void changeImage(int ranImageIndex){
-        dogeView.findViewById(R.id.dogeView);
+    //END OVERALL UPDATE LOGIC
 
-        if(clickAmount>=200) {
-            clickAmount=0;
-            dogeView.setImageResource(currentClicker.icon[ranImageIndex]);
-            }
+
+
+    //START PERM UPGRADE CLICK LOGIC
+    public void onWifiClick(View v) {
+        if(MainActivity.skillPointSum>=upgradeCost){
+            wifiLvlTxt = findViewById(R.id.wifiLvl);
+            wifiLvl+=1;
+            wifiLvlTxt.setText("Level: "+wifiLvl);
+            updateSkillText(true);
+            wifiBought = true;
+            electricityBought = false;
+            miningPoolBought = false;
+
+            upgradeList.add(addPermUpgrade());
+            applyUpgrades();
+        }
         else{
+            updateSkillText(false);
+            wifiBought = false;
+        }
+    }
 
+
+    public void onElectricityClick(View v) {
+        if(MainActivity.skillPointSum>=upgradeCost){
+            electricityLvlTxt = findViewById(R.id.electricityLvl);
+            electricityLvl+=1;
+            electricityLvlTxt.setText("Level: "+electricityLvl);
+            updateSkillText(true);
+            electricityBought = true;
+            wifiBought = false;
+            miningPoolBought = false;
+
+            upgradeList.add(addPermUpgrade());
+            applyUpgrades();
+        }
+        else{
+            updateSkillText(false);
+            electricityBought = false;
         }
 
     }
 
+    public void onMiningPoolCLick(View v) {
+        if(MainActivity.skillPointSum>=upgradeCost){
+            miningPoolLvlTxt = findViewById(R.id.miningLvl);
+            miningLvl+=1;
+            miningPoolLvlTxt.setText("Level: "+miningLvl);
+            updateSkillText(true);
+            wifiBought = false;
+            electricityBought = false;
+            miningPoolBought = true;
+
+            upgradeList.add(addPermUpgrade());
+            applyUpgrades();
+        }
+        else{
+            updateSkillText(false);
+            miningPoolBought = false;
+        }
+
+    }
+
+    public void onChanceClick(View v) {
+        if (MainActivity.masterSum >= prestigeCost) {
+
+
+        }
+    }
+
+    public void onNextPcClick(View v) {
+        if (MainActivity.masterSum >= prestigeCost) {
+
+        }
+    }
+
+    //END PERM UPGRADE CLICK LOGIC
+
+        public Upgrade addPermUpgrade(){
+            if (wifiBought) {
+                Upgrade wifiUpgrade = new Upgrade("Wifi", UpgradeType.PERMANENT, wifiMult);
+                return wifiUpgrade;
+            } else if (electricityBought) {
+                Upgrade electricityUpgrade = new Upgrade("Electricity", UpgradeType.PERMANENT, electricityMult);
+                return electricityUpgrade;
+            } else if (miningPoolBought) {
+                Upgrade miningUpgrade = new Upgrade("MiningPool", UpgradeType.PERMANENT, miningMult);
+                return miningUpgrade;
+            } else {
+                return null;
+            }
+        }
+
+
+        public void updateSkillText (boolean canUpgrade){
+            if (canUpgrade) {
+                MainActivity.skillPointSum = MainActivity.skillPointSum - upgradeCost;
+                skillPointTxt = findViewById(R.id.skillPointTxt);
+                skillPointTxt.setText("Skill Points: " + MainActivity.skillPointSum);
+            } else {
+
+            }
+        }
+    }
 
 
 
-}

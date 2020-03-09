@@ -19,7 +19,7 @@
         android:text="Level: 0"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/elecBtn"
         app:layout_constraintTop_toBottomOf="@+id/wifiSkill" />
 
     <TextView
@@ -33,7 +33,7 @@
         android:text="Level: 0"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/miningBtn"
         app:layout_constraintTop_toBottomOf="@+id/electricitySkill" />
 
     <TextView
@@ -47,7 +47,7 @@
         android:text="Current PC Type: Potato"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/typeBtn"
         app:layout_constraintTop_toBottomOf="@+id/miningSkill" />
 
     <Button
@@ -61,14 +61,14 @@
         android:fontFamily="@font/delius_unicase"
         android:onClick="onWifiClick"
         android:text="Wifi"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/elecBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.867"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/elecBtn"
         android:layout_width="138dp"
         android:layout_height="65dp"
         android:layout_marginStart="161dp"
@@ -78,14 +78,14 @@
         android:fontFamily="@font/delius_unicase"
         android:onClick="onElectricityClick"
         android:text="Electricity"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/miningBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wifiBtn" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/miningBtn"
         android:layout_width="145dp"
         android:layout_height="57dp"
         android:layout_marginStart="106dp"
@@ -95,13 +95,13 @@
         android:fontFamily="@font/delius_unicase"
         android:onClick="onMiningPoolCLick"
         android:text="Mining Pool"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/typeBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/elecBtn" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/typeBtn"
         android:layout_width="142dp"
         android:layout_height="66dp"
         android:layout_marginStart="161dp"
@@ -115,7 +115,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/miningBtn"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
@@ -132,7 +132,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/chanceCostTxt"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/typeBtn"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -147,7 +147,7 @@
         android:text="Skill Points:"
         android:textColor="#ffffff"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/elecBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
@@ -176,7 +176,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="81dp"
         android:fontFamily="@font/delius_unicase"
-        android:text="Skill Cost: "
+        android:text="Skill Cost: 1"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
@@ -218,10 +218,10 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/delius_unicase"
-        android:text="Cost: "
+        android:text="Cost:  "
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/typeBtn"
         app:layout_constraintTop_toBottomOf="@+id/electricityLvl3" />
 
     <Button
@@ -232,6 +232,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="37dp"
+        android:onClick="onChanceClick"
         android:text="Chance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -247,7 +248,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="53dp"
         android:fontFamily="@font/delius_unicase"
-        android:text="Skill Cost:"
+        android:text="Skill Cost: 1"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/eventBtn"

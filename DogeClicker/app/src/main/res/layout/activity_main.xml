@@ -61,7 +61,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="12dp"
         android:fontFamily="@font/delius_unicase"
-        android:text="Mutilper:"
+        android:text="Multiplier: x1"
         android:textAlignment="center"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
