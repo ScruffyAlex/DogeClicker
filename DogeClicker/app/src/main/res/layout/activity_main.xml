@@ -9,153 +9,106 @@
     android:background="@drawable/black_gradient">
 
     <Button
-        android:id="@+id/ramBtn"
-        android:layout_width="131dp"
-        android:layout_height="141dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="578dp"
-        android:fontFamily="@font/delius_unicase"
-        android:onClick="onRAMClick"
-        android:text="RAM"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/cpuBtn"
-        android:layout_width="135dp"
-        android:layout_height="142dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="573dp"
-        android:fontFamily="@font/delius_unicase"
-        android:onClick="onCPUClick"
-        android:text="CPU"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ramBtn"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/cursorBtn"
-        android:layout_width="132dp"
-        android:layout_height="143dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="576dp"
-        android:fontFamily="@font/delius_unicase"
-        android:onClick="onCursorClick"
-        android:text="Cursor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cpuBtn"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
         android:id="@+id/permUpgradeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="9dp"
         android:fontFamily="@font/delius_unicase"
         android:onClick="onUpgradeClick"
         android:text="Upgrades"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/masterMultiplierTxt"
+        app:layout_constraintStart_toEndOf="@+id/masterSumTxt"
         app:layout_constraintTop_toBottomOf="@+id/dogeBtn" />
 
     <ImageButton
         android:id="@+id/dogeBtn"
-        android:layout_width="222dp"
-        android:layout_height="208dp"
+        android:layout_width="205dp"
+        android:layout_height="190dp"
         android:layout_marginStart="116dp"
-        android:layout_marginEnd="133dp"
 
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/dogecoin"
         android:onClick="onDogeCoinClick"
         app:layout_constraintBottom_toTopOf="@+id/permUpgradeBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.366"
+        app:layout_constraintHorizontal_bias="0.302"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/masterMultiplierTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/dogeView" />
 
     <TextView
         android:id="@+id/masterSumTxt"
-        android:layout_width="387dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="145dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="137dp"
+        android:layout_width="145dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="4dp"
+
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="3dp"
         android:fontFamily="@font/delius_unicase"
-        
         android:text="Coins: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/masterMultiplierTxt"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/permUpgradeBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dogeView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/dogeBtn" />
 
     <TextView
         android:id="@+id/masterMultiplierTxt"
-        android:layout_width="392dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="178dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="174dp"
+        android:layout_width="139dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="12dp"
         android:fontFamily="@font/delius_unicase"
         android:text="Multiplier: x1"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/dogeBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/masterSumTxt" />
+        app:layout_constraintStart_toEndOf="@+id/permUpgradeBtn"
+        app:layout_constraintTop_toBottomOf="@+id/dogeBtn" />
 
     <TextView
         android:id="@+id/ramLvl"
         android:layout_width="93dp"
         android:layout_height="20dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="74dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/delius_unicase"
         android:text="Level: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/ramCostTxt"
+        app:layout_constraintEnd_toStartOf="@+id/cpuLvl"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dogeBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/masterSumTxt" />
 
     <TextView
         android:id="@+id/cpuLvl"
         android:layout_width="94dp"
         android:layout_height="23dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="39dp"
         android:layout_marginEnd="44dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="22dp"
         android:fontFamily="@font/delius_unicase"
         android:text="Level: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/cpuCostTxt"
         app:layout_constraintEnd_toStartOf="@+id/cursorLvl"
-        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ramLvl"
-        app:layout_constraintTop_toBottomOf="@+id/permUpgradeBtn"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintTop_toBottomOf="@+id/permUpgradeBtn" />
 
     <TextView
         android:id="@+id/cursorLvl"
         android:layout_width="92dp"
         android:layout_height="21dp"
-        android:layout_marginTop="74dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="15dp"
         android:fontFamily="@font/delius_unicase"
         android:text="Level: 0"
@@ -163,18 +116,19 @@
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/cursorCostTxt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dogeBtn" />
+        app:layout_constraintStart_toEndOf="@+id/cpuLvl"
+        app:layout_constraintTop_toBottomOf="@+id/masterMultiplierTxt" />
 
     <ImageView
         android:id="@+id/dogeView"
-        android:layout_width="255dp"
-        android:layout_height="94dp"
+        android:layout_width="371dp"
+        android:layout_height="124dp"
         android:layout_marginStart="77dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="69dp"
-        app:layout_constraintBottom_toTopOf="@+id/masterSumTxt"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/dogeBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/d1" />
@@ -183,45 +137,82 @@
         android:id="@+id/ramCostTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="13dp"
         android:fontFamily="@font/delius_unicase"
         android:text="Cost: 1500"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/ramBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ramLvl"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/ramLvl" />
 
     <TextView
         android:id="@+id/cpuCostTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="9dp"
         android:fontFamily="@font/delius_unicase"
         android:text="Cost: 150"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/cpuBtn"
-        app:layout_constraintEnd_toStartOf="@+id/cursorCostTxt"
-        app:layout_constraintHorizontal_bias="0.348"
-        app:layout_constraintStart_toEndOf="@+id/ramCostTxt" />
+        app:layout_constraintStart_toEndOf="@+id/ramCostTxt"
+        app:layout_constraintTop_toBottomOf="@+id/cpuLvl"
+        app:layout_constraintVertical_bias="0.99" />
 
     <TextView
         android:id="@+id/cursorCostTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/delius_unicase"
         android:text="Cost: 15"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/cursorBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/cpuCostTxt"
         app:layout_constraintTop_toBottomOf="@+id/cursorLvl"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.869" />
+
+    <ImageButton
+        android:id="@+id/ramBtn"
+        android:layout_width="131dp"
+        android:layout_height="139dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="4dp"
+        android:onClick="onRAMClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cpuBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/cpuBtn"
+        android:layout_width="142dp"
+        android:layout_height="140dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="onCPUClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cursorBtn"
+        app:layout_constraintStart_toEndOf="@+id/ramBtn"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/cursorBtn"
+        android:layout_width="127dp"
+        android:layout_height="142dp"
+        android:layout_marginEnd="7dp"
+        android:onClick="onCursorClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/cpuBtn"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCursorClick(View v){
         TextView cpuLvlText = findViewById(R.id.cursorLvl);
         TextView cursorCostTxt = findViewById(R.id.cursorCostTxt);
-        Button cpuBtn = findViewById(R.id.cursorBtn);
+        ImageButton cpuBtn = findViewById(R.id.cursorBtn);
 
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         cpuBtn.startAnimation(myAnimation);
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCPUClick(View v){
         TextView cpuLvlText = findViewById(R.id.cpuLvl);
-        Button cpuBtn = findViewById(R.id.cpuBtn);
+        ImageButton cpuBtn = findViewById(R.id.cpuBtn);
         cpuCostTxt = findViewById(R.id.cpuCostTxt);
 
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onRAMClick(View v) {
         TextView ramLvlText = findViewById(R.id.ramLvl);
-        Button ramBtn = findViewById(R.id.ramBtn);
+        ImageButton ramBtn = findViewById(R.id.ramBtn);
         ramCostTxt = findViewById(R.id.ramCostTxt);
         Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
         ramBtn.startAnimation(myAnimation);
@@ -249,6 +249,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             ramBought=false;
         }
+//        else {
+//            return ramBought;
+//        }
     }
 
 
