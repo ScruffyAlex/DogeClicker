@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/electricityLvl"
+        android:id="@+id/electricityLvlTxt"
         android:layout_width="82dp"
         android:layout_height="22dp"
         android:layout_marginStart="8dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/wifiSkill" />
 
     <TextView
-        android:id="@+id/miningLvl"
+        android:id="@+id/miningLvlTxt"
         android:layout_width="82dp"
         android:layout_height="22dp"
         android:layout_marginStart="7dp"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/electricitySkill" />
 
     <TextView
-        android:id="@+id/electricityLvl3"
+        android:id="@+id/pcTypeTxt"
         android:layout_width="136dp"
         android:layout_height="40dp"
         android:layout_marginStart="12dp"
@@ -155,7 +155,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/wifiLvl"
+        android:id="@+id/wifiTxt"
         android:layout_width="82dp"
         android:layout_height="22dp"
         android:layout_marginStart="28dp"
@@ -181,7 +181,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toEndOf="@+id/wifiBtn"
-        app:layout_constraintTop_toBottomOf="@+id/wifiLvl" />
+        app:layout_constraintTop_toBottomOf="@+id/wifiTxt" />
 
     <TextView
         android:id="@+id/electricitySkill"
@@ -195,7 +195,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toEndOf="@+id/wifiBtn"
-        app:layout_constraintTop_toBottomOf="@+id/electricityLvl" />
+        app:layout_constraintTop_toBottomOf="@+id/electricityLvlTxt" />
 
     <TextView
         android:id="@+id/miningSkill"
@@ -209,7 +209,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toEndOf="@+id/wifiBtn"
-        app:layout_constraintTop_toBottomOf="@+id/miningLvl" />
+        app:layout_constraintTop_toBottomOf="@+id/miningLvlTxt" />
 
     <TextView
         android:id="@+id/electricitySkill3"
@@ -222,7 +222,7 @@
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/typeBtn"
-        app:layout_constraintTop_toBottomOf="@+id/electricityLvl3" />
+        app:layout_constraintTop_toBottomOf="@+id/pcTypeTxt" />
 
     <Button
         android:id="@+id/eventBtn"

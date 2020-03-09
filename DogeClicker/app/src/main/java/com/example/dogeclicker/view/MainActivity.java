@@ -20,6 +20,8 @@ import com.example.dogeclicker.models.UpgradeType;
 
 import java.util.ArrayList;
 
+import static java.lang.System.out;
+
 //total/100 * percentage number
 
 
@@ -27,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
     EventManager currentEventManager = new EventManager();
 
-    static int masterSum =0;
-    static int masterMult = 1;
+    public static double masterSum =0;
+    public static double masterMult = 1;
 
     static int cursorLvl = 0;
     static int ramLvl = 0;
     static int cpuLvl = 0;
 
-    int wifiLvl =0;
+    int wifiLvl = 0;
     int electricityLvl = 0;
     int miningLvl = 0;
 
@@ -71,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
     TextView pcLvlTxt;
 
     public int upgradeCost = 1;
-    public int prestigeCost = 99999;
+    //double prestigeCost = 1000000000;
+    double prestigeCost = 30;
+
 
     static int wifiMult = 20;
     static int electricityMult = 30;
@@ -142,9 +146,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void generateUpdateInfo(){
         skillPointTxt = findViewById(R.id.skillPointTxt);
-        skillPointTxt.setText("Skill Points: "+MainActivity.skillPointSum);
-    }
+        wifiLvlTxt = findViewById(R.id.wifiTxt);
+        electricityLvlTxt = findViewById(R.id.electricityLvlTxt);
+        miningPoolLvlTxt = findViewById(R.id.miningLvlTxt);
 
+        skillPointTxt.setText("Skill Points: "+MainActivity.skillPointSum);
+        wifiLvlTxt.setText("Level: "+wifiLvl);
+        electricityLvlTxt.setText("Level: "+electricityLvl);
+        miningPoolLvlTxt.setText("Level: "+miningLvl);
+    }
     //END VIEW CHANGING LOGIC
 
 
@@ -165,6 +175,8 @@ public class MainActivity extends AppCompatActivity {
         masterSum = masterSum + (1*masterMult);
 
         masterSumTxt.setText("Coins: "+masterSum);
+
+
         masterMultTxt.setText("Multiplier: x"+masterMult);
         clickAmount++;
         changeImage(currentEventManager.randomNumber(1,currentEventManager.icon.length));
@@ -198,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             cursorBought = false;
+            cantBuyBasicUpgrade();
         }
 
     }
@@ -226,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             cpuBought = false;
+            cantBuyBasicUpgrade();
         }
 
     }
@@ -248,10 +262,9 @@ public class MainActivity extends AppCompatActivity {
             applyUpgrades();
         } else {
             ramBought=false;
+            cantBuyBasicUpgrade();
         }
-//        else {
-//            return ramBought;
-//        }
+
     }
 
 
@@ -297,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //OVERALL UPDATE LOGIC
-    public void updateCoinsSum(int coinSum, int cost){
+    public void updateCoinsSum(double coinSum, double cost){
         masterSum = coinSum-cost;
         masterSumTxt.setText("Coins:"+ masterSum);
     }
@@ -315,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
     //START PERM UPGRADE CLICK LOGIC
     public void onWifiClick(View v) {
         if(skillPointSum>=upgradeCost){
-            wifiLvlTxt = findViewById(R.id.wifiLvl);
+            wifiLvlTxt = findViewById(R.id.wifiTxt);
             wifiLvl+=1;
             wifiLvlTxt.setText("Level: "+wifiLvl);
             updateSkillText(true);
@@ -327,6 +340,7 @@ public class MainActivity extends AppCompatActivity {
             applyUpgrades();
         }
         else{
+            cantBuyPermUpgrade();
             updateSkillText(false);
             wifiBought = false;
         }
@@ -335,7 +349,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onElectricityClick(View v) {
         if(skillPointSum>=upgradeCost){
-            electricityLvlTxt = findViewById(R.id.electricityLvl);
+            electricityLvlTxt = findViewById(R.id.electricityLvlTxt);
             electricityLvl+=1;
             electricityLvlTxt.setText("Level: "+electricityLvl);
             updateSkillText(true);
@@ -347,6 +361,7 @@ public class MainActivity extends AppCompatActivity {
             applyUpgrades();
         }
         else{
+            cantBuyPermUpgrade();
             updateSkillText(false);
             electricityBought = false;
         }
@@ -355,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onMiningPoolCLick(View v) {
         if(skillPointSum>=upgradeCost){
-            miningPoolLvlTxt = findViewById(R.id.miningLvl);
+            miningPoolLvlTxt = findViewById(R.id.miningLvlTxt);
             miningLvl+=1;
             miningPoolLvlTxt.setText("Level: "+miningLvl);
             updateSkillText(true);
@@ -367,6 +382,7 @@ public class MainActivity extends AppCompatActivity {
             applyUpgrades();
         }
         else{
+            cantBuyPermUpgrade();
             updateSkillText(false);
             miningPoolBought = false;
         }
@@ -384,12 +400,14 @@ public class MainActivity extends AppCompatActivity {
                     builder.setMessage(currentEvent.getPromptOfEvent());
                     builder.show();
                     skillPointSum+=currentEvent.getEffect();
+                    skillPointTxt.setText("Skill Points: " + MainActivity.skillPointSum);
                 }
                 else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setTitle(currentEvent.getName());
                     builder.setMessage(currentEvent.getPromptOfEvent());
                     builder.show();
+                    skillPointTxt.setText("Skill Points: " + MainActivity.skillPointSum);
                 }
 
             }
@@ -400,6 +418,7 @@ public class MainActivity extends AppCompatActivity {
                     builder.setMessage(currentEvent.getPromptOfEvent());
                     builder.show();
                     masterSum+=currentEvent.getEffect();
+                    skillPointTxt.setText("Skill Points: " + MainActivity.skillPointSum);
                 }
                 else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -407,16 +426,117 @@ public class MainActivity extends AppCompatActivity {
                     builder.setMessage(currentEvent.getPromptOfEvent());
                     builder.show();
                     updateCoinsSum(masterSum,currentEvent.getEffect());
+                    skillPointTxt.setText("Skill Points: " + MainActivity.skillPointSum);
                 }
             }
 
 
         }
+        else{
+            cantBuyPermUpgrade();
+        }
     }//end onChanceClick
 
     public void onNextPcClick(View v) {
         if (masterSum >= prestigeCost) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("You've prestiged!");
+            builder.setMessage("Your game has reset but now you have a better build and start off with a bigger multiplier." +
+                    " Your Permanent Upgrades have also been kept!");
+            builder.show();
+            skillPointSum++;
+            masterMult = 0;
+            masterSum = 0;
 
+            for(int i=0;i<upgradeList.size();i++){
+                if(upgradeList.get(i).getType()==UpgradeType.BASIC){
+                    upgradeList.remove(i);
+                }
+            }
+
+            applyUpgrades();
+            out.println(upgradeList.toString());
+
+
+
+
+//            if(currentPC==PCType.POTATO){
+//                masterMult+=0;
+//            }
+//            else if(currentPC==PCType.DINOSAUR){
+//                masterMult+=50;
+//            }
+//            else if(currentPC==PCType.DESKTOP){
+//                masterMult+=150;
+//            }
+//            else if(currentPC==PCType.GAMING){
+//                masterMult+=200;
+//            }
+//            else if(currentPC==PCType.MININGRIG){
+//                masterMult+=500;
+//            }
+
+
+            //1,000,000,000 potato - dino
+            //5,000,000,000 dinosaur - desk
+            //10,000,000,000 desktop - game
+            //15,000,000,000 gaming - mining
+            //20,000,000,000 miningrig - dogeCoins
+            //25,000,000,000  1,000,000,000 DogeCoins
+            if(currentPC== PCType.POTATO) {
+                builder.setTitle("The Cake is a Lie");
+                builder.setMessage("Throw away that cybernetic potato. You've got a Dinosaur of a computer now.");
+                builder.show();
+                currentPC = PCType.DINOSAUR;
+                masterMult = masterMult+ 50;
+                //prestigeCost = 5000000000.0;
+                prestigeCost = 50;
+
+
+            }
+            else if(currentPC == PCType.DINOSAUR){
+                builder.setTitle("Ok Boomer");
+                builder.setMessage("A desktop is fine... if you were a boomer. Keep playing to get better.");
+                builder.show();
+                currentPC = PCType.DESKTOP;
+                masterMult = masterMult+ 150;
+                //prestigeCost =10000000000.0;
+                prestigeCost = 500;
+            }
+            else if(currentPC == PCType.DESKTOP){
+                builder.setTitle("Rise up Gamers");
+                builder.setMessage("It's Gamer time, you got a Gaming computer now!");
+                builder.show();
+                currentPC = PCType.GAMING;
+                masterMult = masterMult+ 200;
+
+                //prestigeCost =15000000000.0;
+                prestigeCost = 5000;
+
+            }
+            else if(currentPC == PCType.GAMING){
+                builder.setTitle("*Minecraft Noises*");
+                builder.setMessage("You've gone up to the best rig!");
+                builder.show();
+                currentPC = PCType.MININGRIG;
+                masterMult = masterMult+ 500;
+                //prestigeCost =20000000000.0;
+
+                prestigeCost = 50000;
+            }
+            else if(currentPC == PCType.MININGRIG){
+                builder.setTitle("Best Build!");
+                builder.setMessage("You've got the best possible rig! Take 1,000,000 Doge coins instead!");
+                builder.show();
+                masterSum+=1000000000;
+            }
+
+        }
+        else{
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("STOP! YOU HAVE VIOLATED THE LAW");
+            builder.setMessage("You can't prestige yet!");
+            builder.show();
         }
     }
 
@@ -447,6 +567,22 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+
+        public void cantBuyBasicUpgrade(){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("STOP! YOU HAVE VIOLATED THE LAW");
+            builder.setMessage("STOP! YOU VIOLATED THE LAW! PAY THE COURT A FINE OR SERVE YOUR SENTENCE, YOUR STOLEN GOODS ARE NOW FORFEIT." +
+                    " (You don't have enough coins)");
+            builder.show();
+        }
+
+    public void cantBuyPermUpgrade(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("STOP! YOU HAVE VIOLATED THE LAW");
+        builder.setMessage("STOP! YOU VIOLATED THE LAW! PAY THE COURT A FINE OR SERVE YOUR SENTENCE, YOUR STOLEN GOODS ARE NOW FORFEIT." +
+                " (You don't have enough skill points)");
+        builder.show();
+    }
     }
 
 

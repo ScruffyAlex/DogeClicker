@@ -1,8 +1,6 @@
 package com.example.dogeclicker.view;
 
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -73,7 +71,7 @@ public class PermUpgradePage extends AppCompatActivity {
 
     public void onWifiClick() {
         if(MainActivity.skillPointSum>upgradeCost){
-            wifiLvlTxt = findViewById(R.id.wifiLvl);
+            wifiLvlTxt = findViewById(R.id.wifiTxt);
             wifiLvl+=1;
             wifiLvlTxt.setText("Level: "+wifiLvl);
             updateSkillText(true);
@@ -87,7 +85,7 @@ public class PermUpgradePage extends AppCompatActivity {
 
     public void onElectricityClick() {
         if(MainActivity.skillPointSum>upgradeCost){
-            electricityLvlTxt = findViewById(R.id.electricityLvl);
+            electricityLvlTxt = findViewById(R.id.electricityLvlTxt);
             electricityLvl+=1;
             electricityLvlTxt.setText("Level: "+electricityLvl);
             updateSkillText(true);
@@ -102,7 +100,7 @@ public class PermUpgradePage extends AppCompatActivity {
 
     public void onMiningPoolCLick() {
         if(MainActivity.skillPointSum>upgradeCost){
-            miningPoolLvlTxt = findViewById(R.id.miningLvl);
+            miningPoolLvlTxt = findViewById(R.id.miningLvlTxt);
             miningLvl+=1;
             miningPoolLvlTxt.setText("Level: "+miningLvl);
             updateSkillText(true);
