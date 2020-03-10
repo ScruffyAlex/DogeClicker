@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     public int upgradeCost = 1;
     //double prestigeCost = 1000000000;
-    double prestigeCost = 30;
+    double prestigeCost = 50000;
 
 
     static int wifiMult = 20;
@@ -277,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onUpgradeClick(View v){
-        Button upgrade = findViewById(R.id.permUpgradeBtn);
+        ImageButton upgrade = findViewById(R.id.permUpgradeBtn);
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         upgrade.startAnimation(myAnimation);
         setContentView(R.layout.perm_upgrade_page);
@@ -494,7 +494,7 @@ public class MainActivity extends AppCompatActivity {
                 currentPC.setPcType(PCType.DINOSAUR);
                 masterMult = masterMult+ 50;
                 //prestigeCost = 5000000000.0;
-                prestigeCost = 15000;
+                prestigeCost = 100000;
             }
             else if(currentPC.getPcType() == PCType.DINOSAUR){
                 builder.setTitle("Ok Boomer");
@@ -502,7 +502,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.show();
                 currentPC.setPcType(PCType.DESKTOP);
                 masterMult = masterMult+ 150;
-                prestigeCost =100000.0;
+                prestigeCost =150000.0;
             }
             else if(currentPC.getPcType() == PCType.DESKTOP){
                 builder.setTitle("Rise up Gamers");
@@ -511,7 +511,7 @@ public class MainActivity extends AppCompatActivity {
                 currentPC.setPcType(PCType.GAMING);
                 masterMult = masterMult+ 200;
 
-                prestigeCost = 10000000;
+                prestigeCost = 20000000;
 
             }
             else if(currentPC.getPcType() == PCType.GAMING){
