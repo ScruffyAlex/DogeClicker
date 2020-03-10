@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     TextView masterSumTxt;
     TextView masterMultTxt;
 
-    //Permanent Upgrade Page
+    //Permanent Upgrade Page views & Variables
 
     TextView skillPointTxt;
     TextView wifiLvlTxt;
@@ -75,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
     TextView pcCostTxt;
 
     public int upgradeCost = 1;
-    //double prestigeCost = 1000000000;
-    double prestigeCost = 30;
+    double prestigeCost = 50000;
 
 
     static int wifiMult = 20;
@@ -86,8 +85,6 @@ public class MainActivity extends AppCompatActivity {
     boolean wifiBought = false;
     boolean electricityBought = false;
     boolean miningPoolBought = false;
-    boolean chanceBought = false;
-    boolean pcBought = false;
 
     PC currentPC = new PC(PCType.POTATO);
 
@@ -143,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
         ramCostTxt.setText("Cost: "+ramCost);
         cpuCostTxt.setText("Cost: "+cpuCost);
         cursorCostTxt.setText("Cost: "+cursorCost);
-
     }
 
     public void generateUpdateInfo(){
@@ -174,22 +170,14 @@ public class MainActivity extends AppCompatActivity {
         masterSumTxt = findViewById(R.id.masterSumTxt);
         masterMultTxt = findViewById(R.id.masterMultiplierTxt);
         dogeView = findViewById(R.id.dogeView);
-
-
-
         dogeBtn.startAnimation(myAnimation);
 
         masterSum = masterSum + (1*masterMult);
-
         masterSumTxt.setText("Coins: "+masterSum);
-
 
         masterMultTxt.setText("Multiplier: x"+masterMult);
         clickAmount++;
         changeImage(currentEventManager.randomNumber(1,currentEventManager.icon.length));
-
-
-
     }
 
     public void onCursorClick(View v){
@@ -277,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onUpgradeClick(View v){
-        Button upgrade = findViewById(R.id.permUpgradeBtn);
+        ImageButton upgrade = findViewById(R.id.permUpgradeBtn);
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         upgrade.startAnimation(myAnimation);
         setContentView(R.layout.perm_upgrade_page);
@@ -296,7 +284,6 @@ public class MainActivity extends AppCompatActivity {
     //END OVERALL UPGRADE LOGIC
 
     //BASIC UPGRADE LOGIC
-
     public Upgrade addBasicUpgrade() {
             if (cursorBought) {
                 Upgrade cursorUpgrade = new Upgrade("Cursor", UpgradeType.BASIC, 1 * cursorLvl);
@@ -315,7 +302,6 @@ public class MainActivity extends AppCompatActivity {
 
     //END BASIC UPGRADE LOGIC
 
-
     //OVERALL UPDATE LOGIC
     public void updateCoinsSum(double coinSum, double cost){
         masterSum = coinSum-cost;
@@ -329,8 +315,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //END OVERALL UPDATE LOGIC
-
-
 
     //START PERM UPGRADE CLICK LOGIC
     public void onWifiClick(View v) {
@@ -353,7 +337,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void onElectricityClick(View v) {
         if(skillPointSum>=upgradeCost){
             electricityLvlTxt = findViewById(R.id.electricityLvlTxt);
@@ -372,7 +355,6 @@ public class MainActivity extends AppCompatActivity {
             updateSkillText(false);
             electricityBought = false;
         }
-
     }
 
     public void onMiningPoolCLick(View v) {
@@ -393,7 +375,6 @@ public class MainActivity extends AppCompatActivity {
             updateSkillText(false);
             miningPoolBought = false;
         }
-
     }
 
     public void onChanceClick(View v) {
@@ -416,7 +397,6 @@ public class MainActivity extends AppCompatActivity {
                     builder.show();
                     skillPointTxt.setText("Skill Points: " + MainActivity.skillPointSum);
                 }
-
             }
             else{
                 if(currentEvent.isGoodEvent()){
@@ -436,8 +416,6 @@ public class MainActivity extends AppCompatActivity {
                     skillPointTxt.setText("Skill Points: " + MainActivity.skillPointSum);
                 }
             }
-
-
         }
         else{
             cantBuyPermUpgrade();
@@ -464,29 +442,6 @@ public class MainActivity extends AppCompatActivity {
             applyUpgrades();
             out.println(upgradeList.toString());
 
-//            if(currentPC==PCType.POTATO){
-//                masterMult+=0;
-//            }
-//            else if(currentPC==PCType.DINOSAUR){
-//                masterMult+=50;
-//            }
-//            else if(currentPC==PCType.DESKTOP){
-//                masterMult+=150;
-//            }
-//            else if(currentPC==PCType.GAMING){
-//                masterMult+=200;
-//            }
-//            else if(currentPC==PCType.MININGRIG){
-//                masterMult+=500;
-//            }
-
-
-            //1,000,000,000 potato - dino
-            //5,000,000,000 dinosaur - desk
-            //10,000,000,000 desktop - game
-            //15,000,000,000 gaming - mining
-            //20,000,000,000 miningrig - dogeCoins
-            //25,000,000,000  1,000,000,000 DogeCoins
             if(currentPC.getPcType()== PCType.POTATO) {
                 builder.setTitle("The Cake is a Lie");
                 builder.setMessage("Throw away that cybernetic potato. You've got a Dinosaur of a computer now.");
@@ -494,7 +449,7 @@ public class MainActivity extends AppCompatActivity {
                 currentPC.setPcType(PCType.DINOSAUR);
                 masterMult = masterMult+ 50;
                 //prestigeCost = 5000000000.0;
-                prestigeCost = 15000;
+                prestigeCost = 100000;
             }
             else if(currentPC.getPcType() == PCType.DINOSAUR){
                 builder.setTitle("Ok Boomer");
@@ -502,7 +457,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.show();
                 currentPC.setPcType(PCType.DESKTOP);
                 masterMult = masterMult+ 150;
-                prestigeCost =100000.0;
+                prestigeCost =150000.0;
             }
             else if(currentPC.getPcType() == PCType.DESKTOP){
                 builder.setTitle("Rise up Gamers");
@@ -511,7 +466,7 @@ public class MainActivity extends AppCompatActivity {
                 currentPC.setPcType(PCType.GAMING);
                 masterMult = masterMult+ 200;
 
-                prestigeCost = 10000000;
+                prestigeCost = 20000000;
 
             }
             else if(currentPC.getPcType() == PCType.GAMING){
@@ -557,7 +512,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
         public void updateSkillText (boolean canUpgrade){
             if (canUpgrade) {
                 MainActivity.skillPointSum = MainActivity.skillPointSum - upgradeCost;
@@ -567,7 +521,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-
         public void cantBuyBasicUpgrade(){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("STOP! YOU HAVE VIOLATED THE LAW");
@@ -576,13 +529,13 @@ public class MainActivity extends AppCompatActivity {
             builder.show();
         }
 
-    public void cantBuyPermUpgrade(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("STOP! YOU HAVE VIOLATED THE LAW");
-        builder.setMessage("STOP! YOU VIOLATED THE LAW! PAY THE COURT A FINE OR SERVE YOUR SENTENCE, YOUR STOLEN GOODS ARE NOW FORFEIT." +
-                " (You don't have enough skill points)");
-        builder.show();
-    }
+        public void cantBuyPermUpgrade(){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("STOP! YOU HAVE VIOLATED THE LAW");
+            builder.setMessage("STOP! YOU VIOLATED THE LAW! PAY THE COURT A FINE OR SERVE YOUR SENTENCE, YOUR STOLEN GOODS ARE NOW FORFEIT." +
+                    " (You don't have enough skill points)");
+            builder.show();
+        }
     }
 
 
