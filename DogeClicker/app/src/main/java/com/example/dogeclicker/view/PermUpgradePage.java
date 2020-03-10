@@ -1,6 +1,5 @@
 package com.example.dogeclicker.view;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,6 +11,11 @@ import com.example.dogeclicker.models.Upgrade;
 import com.example.dogeclicker.models.UpgradeType;
 
 public class PermUpgradePage extends AppCompatActivity {
+
+//    Button wifiBtn = findViewById(R.id.wifiBtn);
+//    Button elecBtn = findViewById(R.id.elecBtn);
+//    Button miningBtn = findViewById(R.id.miningBtn);
+
 
     TextView skillPointTxt;
     TextView wifiLvlTxt;
@@ -40,58 +44,76 @@ public class PermUpgradePage extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onStart() {
+        super.onStart();
         setContentView(R.layout.perm_upgrade_page);
+
+//        wifiBtn.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View v){
+//            onWifiClick();
+//            }
+//        });
+//
+//        elecBtn.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View v){
+//                onElectricityClick();
+//            }
+//        });
+//
+//        miningBtn.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View v){
+//                onMiningPoolCLick();
+//            }
+//        });
 
 
     }
 
-    public boolean onWifiClick(View v) {
+    public void onWifiClick() {
         if(MainActivity.skillPointSum>upgradeCost){
-            wifiLvlTxt = findViewById(R.id.wifiLvl);
+            wifiLvlTxt = findViewById(R.id.wifiTxt);
             wifiLvl+=1;
             wifiLvlTxt.setText("Level: "+wifiLvl);
             updateSkillText(true);
-            return wifiBought = true;
+             wifiBought = true;
         }
         else{
             updateSkillText(false);
-            return wifiBought = false;
+            wifiBought = false;
         }
     }
 
-    public boolean onElectricityClick(View v) {
+    public void onElectricityClick() {
         if(MainActivity.skillPointSum>upgradeCost){
-            electricityLvlTxt = findViewById(R.id.electricityLvl);
+            electricityLvlTxt = findViewById(R.id.electricityLvlTxt);
             electricityLvl+=1;
             electricityLvlTxt.setText("Level: "+electricityLvl);
             updateSkillText(true);
-            return electricityBought = true;
+            electricityBought = true;
         }
         else{
             updateSkillText(false);
-            return electricityBought = false;
+            electricityBought = false;
         }
 
     }
 
-    public boolean onMiningPoolCLick(View v) {
+    public void onMiningPoolCLick() {
         if(MainActivity.skillPointSum>upgradeCost){
-            miningPoolLvlTxt = findViewById(R.id.miningLvl);
+            miningPoolLvlTxt = findViewById(R.id.miningLvlTxt);
             miningLvl+=1;
             miningPoolLvlTxt.setText("Level: "+miningLvl);
             updateSkillText(true);
-            return  miningPoolBought = true;
+            miningPoolBought = true;
         }
         else{
             updateSkillText(false);
-            return miningPoolBought = false;
+            miningPoolBought = false;
         }
 
     }
 
-    public Upgrade addUpgrade() {
+    public Upgrade addPermUpgrade() {
         if (wifiBought) {
             Upgrade wifiUpgrade = new Upgrade("Wifi", UpgradeType.PERMANENT, wifiMult);
             return wifiUpgrade;

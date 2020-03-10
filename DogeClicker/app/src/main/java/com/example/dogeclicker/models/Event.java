@@ -2,15 +2,17 @@ package com.example.dogeclicker.models;
 
 public class Event {
     private String name;
-    private int effect;
+    private double effect;
     private String promptOfEvent;
     private boolean goodEvent;
+    private boolean isSkillPointEffect;
 
-    public Event(String name, int effect, String promptOfEvent, boolean goodEvent) {
+    public Event(String name, double effect, String promptOfEvent, boolean goodEvent,boolean isSkillPointEffect) {
         setName(name);
         setEffect(effect);
         setPromptOfEvent(promptOfEvent);
         setGoodEvent(goodEvent);
+        setAsSkillPointEffect(isSkillPointEffect);
     }
 
     public String getName() {
@@ -21,11 +23,11 @@ public class Event {
         this.name = name;
     }
 
-    public int getEffect() {
+    public double getEffect() {
         return effect;
     }
 
-    public void setEffect(int effect) {
+    public void setEffect(double effect) {
         this.effect = effect;
     }
 
@@ -47,6 +49,14 @@ public class Event {
 
     public int addAmount(){
         return 0;
+    }
+
+    public boolean isSkillPointEffect() {
+        return isSkillPointEffect;
+    }
+
+    public void setAsSkillPointEffect(boolean skillPointEffect) {
+        isSkillPointEffect = skillPointEffect;
     }
 
 
