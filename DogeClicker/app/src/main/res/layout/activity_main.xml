@@ -27,9 +27,8 @@
         android:id="@+id/masterSumTxt"
         android:layout_width="145dp"
         android:layout_height="39dp"
-        android:layout_marginStart="4dp"
 
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/delius_unicase"
         android:text="Coins: 0"
         android:textAlignment="center"
@@ -41,8 +40,8 @@
         android:id="@+id/masterMultiplierTxt"
         android:layout_width="139dp"
         android:layout_height="34dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/delius_unicase"
         android:text="Multiplier: x1"
         android:textAlignment="center"
@@ -80,7 +79,8 @@
         app:layout_constraintEnd_toStartOf="@+id/cursorLvl"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ramLvl"
-        app:layout_constraintTop_toBottomOf="@+id/permUpgradeBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/permUpgradeBtn"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/cursorLvl"
@@ -166,7 +166,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cpuBtn"
         app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        />
 
     <ImageButton
         android:id="@+id/cpuBtn"
@@ -178,7 +178,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cursorBtn"
         app:layout_constraintStart_toEndOf="@+id/ramBtn"
-        tools:srcCompat="@tools:sample/avatars" />
+         />
 
     <ImageButton
         android:id="@+id/cursorBtn"
@@ -191,12 +191,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/cpuBtn"
-        tools:srcCompat="@tools:sample/avatars" />
+         />
 
     <ImageButton
         android:id="@+id/permUpgradeBtn"
-        android:layout_width="104dp"
-        android:layout_height="47dp"
+        android:layout_width="108dp"
+        android:layout_height="45dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/upgradebutton"
@@ -204,8 +204,7 @@
         app:layout_constraintEnd_toStartOf="@+id/masterMultiplierTxt"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/masterSumTxt"
-        app:layout_constraintTop_toBottomOf="@+id/dogeBtn"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/dogeBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
