@@ -432,6 +432,12 @@ public class MainActivity extends AppCompatActivity {
             skillPointSum++;
             masterMult = 0;
             masterSum = 0;
+            cpuLvl = 0;
+            ramLvl = 0;
+            cursorLvl = 0;
+            cursorCost = 15;
+            cpuCost = 150;
+            ramCost = 1500;
 
             for(int i=0;i<upgradeList.size();i++){
                 if(upgradeList.get(i).getType()==UpgradeType.BASIC){
