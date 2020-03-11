@@ -165,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     //MAIN GAME BUTTON CLICK LOGIC
     public void onDogeCoinClick(View v){
         ImageButton dogeBtn = findViewById(R.id.dogeBtn);
