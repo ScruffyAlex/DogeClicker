@@ -105,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void backButton(View v){
+        ImageButton backBtn = findViewById(R.id.backBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        backBtn.startAnimation(myAnimation);
         setContentView(R.layout.activity_main);
         generateGameInfo();
     }
@@ -112,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     public void changeImage(int ranImageIndex){
         dogeView.findViewById(R.id.dogeView);
 
-        if(clickAmount>=200) {
+        if(clickAmount>=100) {
             dogeView.setImageResource(currentEventManager.icon[ranImageIndex]);
             clickAmount=0;}
         else{
@@ -182,83 +185,98 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCursorClick(View v){
-        TextView cpuLvlText = findViewById(R.id.cursorLvl);
-        TextView cursorCostTxt = findViewById(R.id.cursorCostTxt);
-        ImageButton cpuBtn = findViewById(R.id.cursorBtn);
-
-        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
-        cpuBtn.startAnimation(myAnimation);
-
-        if(masterSum>=cursorCost){
-            cursorLvl+=1;
-            cpuLvlText.setText("Level:"+cursorLvl);
-            updateCoinsSum(masterSum,cursorCost);
-            ramBought = false;
-            cursorBought = true;
-            cpuBought = false;
-
-            cursorCost = cursorCost+((cursorCost+5)/100+20);
-            cursorCostTxt.setText("Cost: "+cursorCost);
-            upgradeList.add(addBasicUpgrade());
-
-            applyUpgrades();
-
+        if(clickAmount==0) {
+        handleUpgradeBeforeClick();
         }
-        else{
-            cursorBought = false;
-            cantBuyBasicUpgrade();
+        else {
+            TextView cpuLvlText = findViewById(R.id.cursorLvl);
+            TextView cursorCostTxt = findViewById(R.id.cursorCostTxt);
+            ImageButton cpuBtn = findViewById(R.id.cursorBtn);
+
+            Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
+            cpuBtn.startAnimation(myAnimation);
+
+            if (masterSum >= cursorCost) {
+                cursorLvl += 1;
+                cpuLvlText.setText("Level:" + cursorLvl);
+                updateCoinsSum(masterSum, cursorCost);
+                ramBought = false;
+                cursorBought = true;
+                cpuBought = false;
+
+                cursorCost = cursorCost + ((cursorCost + 5) / 100 + 20);
+                cursorCostTxt.setText("Cost: " + cursorCost);
+                upgradeList.add(addBasicUpgrade());
+
+                applyUpgrades();
+
+            } else {
+                cursorBought = false;
+                cantBuyBasicUpgrade();
+            }
         }
 
     }
 
     public void onCPUClick(View v){
-        TextView cpuLvlText = findViewById(R.id.cpuLvl);
-        ImageButton cpuBtn = findViewById(R.id.cpuBtn);
-        cpuCostTxt = findViewById(R.id.cpuCostTxt);
 
-        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
-        cpuBtn.startAnimation(myAnimation);
-
-        if(masterSum>=cpuCost){
-            cpuLvl+=1;
-            cpuLvlText.setText("Level:"+cpuLvl);
-            updateCoinsSum(masterSum,cpuCost);
-            ramBought = false;
-            cursorBought = false;
-            cpuBought = true;
-
-            cpuCost = cpuCost+ (updateCost(cpuCost,20));
-            cpuCostTxt.setText("Cost: "+cpuCost);
-            upgradeList.add(addBasicUpgrade());
-            applyUpgrades();
-
+        if(clickAmount==0) {
+            handleUpgradeBeforeClick();
         }
-        else{
-            cpuBought = false;
-            cantBuyBasicUpgrade();
+        else {
+            TextView cpuLvlText = findViewById(R.id.cpuLvl);
+            ImageButton cpuBtn = findViewById(R.id.cpuBtn);
+            cpuCostTxt = findViewById(R.id.cpuCostTxt);
+
+            Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
+            cpuBtn.startAnimation(myAnimation);
+
+            if (masterSum >= cpuCost) {
+                cpuLvl += 1;
+                cpuLvlText.setText("Level:" + cpuLvl);
+                updateCoinsSum(masterSum, cpuCost);
+                ramBought = false;
+                cursorBought = false;
+                cpuBought = true;
+
+                cpuCost = cpuCost + (updateCost(cpuCost, 20));
+                cpuCostTxt.setText("Cost: " + cpuCost);
+                upgradeList.add(addBasicUpgrade());
+                applyUpgrades();
+
+            } else {
+                cpuBought = false;
+                cantBuyBasicUpgrade();
+            }
         }
 
     }
     public void onRAMClick(View v) {
-        TextView ramLvlText = findViewById(R.id.ramLvl);
-        ImageButton ramBtn = findViewById(R.id.ramBtn);
-        ramCostTxt = findViewById(R.id.ramCostTxt);
-        Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
-        ramBtn.startAnimation(myAnimation);
-        if (masterSum >= ramCost) {
-            ramLvl += 1;
-            ramLvlText.setText("Level:"+ramLvl);
-            updateCoinsSum(masterSum,ramCost);
-            cpuBought = false;
-            cursorBought=false;
-            ramBought = true;
-            ramCost = ramCost+ updateCost(ramCost,35);
-            ramCostTxt.setText("Cost: "+ramCost);
-            upgradeList.add(addBasicUpgrade());
-            applyUpgrades();
-        } else {
-            ramBought=false;
-            cantBuyBasicUpgrade();
+
+        if(clickAmount==0) {
+            handleUpgradeBeforeClick();
+        }
+        else {
+            TextView ramLvlText = findViewById(R.id.ramLvl);
+            ImageButton ramBtn = findViewById(R.id.ramBtn);
+            ramCostTxt = findViewById(R.id.ramCostTxt);
+            Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
+            ramBtn.startAnimation(myAnimation);
+            if (masterSum >= ramCost) {
+                ramLvl += 1;
+                ramLvlText.setText("Level:" + ramLvl);
+                updateCoinsSum(masterSum, ramCost);
+                cpuBought = false;
+                cursorBought = false;
+                ramBought = true;
+                ramCost = ramCost + updateCost(ramCost, 35);
+                ramCostTxt.setText("Cost: " + ramCost);
+                upgradeList.add(addBasicUpgrade());
+                applyUpgrades();
+            } else {
+                ramBought = false;
+                cantBuyBasicUpgrade();
+            }
         }
 
     }
@@ -271,6 +289,7 @@ public class MainActivity extends AppCompatActivity {
         upgrade.startAnimation(myAnimation);
         setContentView(R.layout.perm_upgrade_page);
         generateUpdateInfo();
+        upgrade.startAnimation(myAnimation);
     }
 
     //OVERALL UPGRADE LOGIC
@@ -278,6 +297,7 @@ public class MainActivity extends AppCompatActivity {
     public void applyUpgrades(){
         try {
             for (int i = 0; i < upgradeList.size(); i++) {
+                masterMult =0;
                 masterMult += upgradeList.get(i).getMultiplier();
                 masterMultTxt.setText("Multiplier: x" + masterMult);
             }
@@ -334,6 +354,8 @@ public class MainActivity extends AppCompatActivity {
 
     //START PERM UPGRADE CLICK LOGIC
     public void onWifiClick(View v) {
+        ImageButton wifiBtn = findViewById(R.id.wifiBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if(masterSum==0) {
             handleUpgradeBeforeClick();
         }
@@ -355,9 +377,12 @@ public class MainActivity extends AppCompatActivity {
                 wifiBought = false;
             }
         }
+        wifiBtn.startAnimation(myAnimation);
     }
 
     public void onElectricityClick(View v) {
+        ImageButton electricBtn = findViewById(R.id.elecBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if(masterSum==0) {
             handleUpgradeBeforeClick();
         }
@@ -379,9 +404,12 @@ public class MainActivity extends AppCompatActivity {
                 electricityBought = false;
             }
         }
+        electricBtn.startAnimation(myAnimation);
     }
 
     public void onMiningPoolCLick(View v) {
+        ImageButton mineBtn = findViewById(R.id.miningBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if(masterSum==0) {
           handleUpgradeBeforeClick();
         }
@@ -403,9 +431,12 @@ public class MainActivity extends AppCompatActivity {
                 miningPoolBought = false;
             }
         }
+        mineBtn.startAnimation(myAnimation);
     }
 
     public void onChanceClick(View v) {
+        ImageButton chanceBtn = findViewById(R.id.eventBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if (skillPointSum >= permUpgradeCost) {
             skillPointSum--;
             Event currentEvent = currentEventManager.runEvent();
@@ -448,9 +479,12 @@ public class MainActivity extends AppCompatActivity {
         else{
             cantBuyPermUpgrade();
         }
+        chanceBtn.startAnimation(myAnimation);
     }//end onChanceClick
 
     public void onNextPcClick(View v) {
+        ImageButton pcBtn = findViewById(R.id.typeBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if (masterSum >= prestigeCost) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("You've prestiged!");
@@ -470,6 +504,7 @@ public class MainActivity extends AppCompatActivity {
             for(int i=0;i<upgradeList.size();i++){
                 if(upgradeList.get(i).getType()==UpgradeType.BASIC){
                     upgradeList.remove(i);
+                    i--;
                 }
             }
 
@@ -478,7 +513,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(currentPC.getPcType()== PCType.POTATO) {
                 builder.setTitle("The Cake is a Lie");
-                builder.setMessage("Throw away that cybernetic potato. You've got a Dinosaur of a computer now.");
+                builder.setMessage("Throw away that cybernetic potato. You've got a Dinosaur of a computer now. You also got a base multiplier of "+50);
                 builder.show();
                 currentPC.setPcType(PCType.DINOSAUR);
                 masterMult = masterMult+ 50;
@@ -487,7 +522,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(currentPC.getPcType() == PCType.DINOSAUR){
                 builder.setTitle("Ok Boomer");
-                builder.setMessage("A desktop is fine... if you were a boomer. Keep playing to get better.");
+                builder.setMessage("A desktop is fine... if you were a boomer. Keep playing to get better. You also got a base multiplier of "+150);
                 builder.show();
                 currentPC.setPcType(PCType.DESKTOP);
                 masterMult = masterMult+ 150;
@@ -495,7 +530,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(currentPC.getPcType() == PCType.DESKTOP){
                 builder.setTitle("Rise up Gamers");
-                builder.setMessage("It's Gamer time, you got a Gaming computer now!");
+                builder.setMessage("It's Gamer time, you got a Gaming computer now! You also got a base multiplier of"+ 200);
                 builder.show();
                 currentPC.setPcType(PCType.GAMING);
                 masterMult = masterMult+ 200;
@@ -505,7 +540,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(currentPC.getPcType() == PCType.GAMING){
                 builder.setTitle("*Minecraft Noises*");
-                builder.setMessage("You've gone up to the best rig!");
+                builder.setMessage("You've gone up to the best rig! You also got a base multiplier of "+500);
                 builder.show();
                 currentPC.setPcType(PCType.MININGRIG);
                 masterMult = masterMult+ 500;
@@ -527,6 +562,7 @@ public class MainActivity extends AppCompatActivity {
             builder.show();
         }
         generateUpdateInfo();
+        pcBtn.startAnimation(myAnimation);
     }
 
     //END PERM UPGRADE CLICK LOGIC
