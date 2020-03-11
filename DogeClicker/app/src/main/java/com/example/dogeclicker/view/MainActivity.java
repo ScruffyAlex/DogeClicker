@@ -518,6 +518,7 @@ public class MainActivity extends AppCompatActivity {
                 masterMult = masterMult+ 50;
                 //prestigeCost = 5000000000.0;
                 prestigeCost = 100000;
+
             }
             else if(currentPC.getPcType() == PCType.DINOSAUR){
                 builder.setTitle("Ok Boomer");
@@ -526,6 +527,7 @@ public class MainActivity extends AppCompatActivity {
                 currentPC.setPcType(PCType.DESKTOP);
                 masterMult = masterMult+ 150;
                 prestigeCost =150000.0;
+                skillPointSum++;
             }
             else if(currentPC.getPcType() == PCType.DESKTOP){
                 builder.setTitle("Rise up Gamers");
@@ -535,6 +537,7 @@ public class MainActivity extends AppCompatActivity {
                 masterMult = masterMult+ 200;
 
                 prestigeCost = 20000000;
+                skillPointSum++;
 
             }
             else if(currentPC.getPcType() == PCType.GAMING){
@@ -543,7 +546,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.show();
                 currentPC.setPcType(PCType.MININGRIG);
                 masterMult = masterMult+ 500;
-
+                skillPointSum++;
                 prestigeCost = 50000;
             }
             else if(currentPC.getPcType() == PCType.MININGRIG){
