@@ -275,10 +275,25 @@ public class MainActivity extends AppCompatActivity {
     //OVERALL UPGRADE LOGIC
 
     public void applyUpgrades(){
-        for(int i=0;i<upgradeList.size();i++){
-            masterMult += upgradeList.get(i).getMultiplier();
-            masterMultTxt.setText("Multiplier: x"+masterMult);
+        try {
+            for (int i = 0; i < upgradeList.size(); i++) {
+                masterMult += upgradeList.get(i).getMultiplier();
+                masterMultTxt.setText("Multiplier: x" + masterMult);
+            }
         }
+        catch(NullPointerException npe){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("HALT!");
+            builder.setMessage("You should try getting coins before upgrading.");
+            builder.show();
+        }
+    }
+
+    public void handleUpgradeBeforeClick(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("HALT");
+        builder.setMessage("You should get some coins before applying upgrades.");
+        builder.show();
     }
 
     //END OVERALL UPGRADE LOGIC
@@ -318,62 +333,74 @@ public class MainActivity extends AppCompatActivity {
 
     //START PERM UPGRADE CLICK LOGIC
     public void onWifiClick(View v) {
-        if(skillPointSum>=upgradeCost){
-            wifiLvlTxt = findViewById(R.id.wifiTxt);
-            wifiLvl+=1;
-            wifiLvlTxt.setText("Level: "+wifiLvl);
-            updateSkillText(true);
-            wifiBought = true;
-            electricityBought = false;
-            miningPoolBought = false;
-
-            upgradeList.add(addPermUpgrade());
-            applyUpgrades();
+        if(masterSum==0) {
+            handleUpgradeBeforeClick();
         }
-        else{
-            cantBuyPermUpgrade();
-            updateSkillText(false);
-            wifiBought = false;
+        else {
+            if (skillPointSum >= upgradeCost) {
+                wifiLvlTxt = findViewById(R.id.wifiTxt);
+                wifiLvl += 1;
+                wifiLvlTxt.setText("Level: " + wifiLvl);
+                updateSkillText(true);
+                wifiBought = true;
+                electricityBought = false;
+                miningPoolBought = false;
+
+                upgradeList.add(addPermUpgrade());
+                applyUpgrades();
+            } else {
+                cantBuyPermUpgrade();
+                updateSkillText(false);
+                wifiBought = false;
+            }
         }
     }
 
     public void onElectricityClick(View v) {
-        if(skillPointSum>=upgradeCost){
-            electricityLvlTxt = findViewById(R.id.electricityLvlTxt);
-            electricityLvl+=1;
-            electricityLvlTxt.setText("Level: "+electricityLvl);
-            updateSkillText(true);
-            electricityBought = true;
-            wifiBought = false;
-            miningPoolBought = false;
-
-            upgradeList.add(addPermUpgrade());
-            applyUpgrades();
+        if(masterSum==0) {
+            handleUpgradeBeforeClick();
         }
-        else{
-            cantBuyPermUpgrade();
-            updateSkillText(false);
-            electricityBought = false;
+        else {
+            if (skillPointSum >= upgradeCost) {
+                electricityLvlTxt = findViewById(R.id.electricityLvlTxt);
+                electricityLvl += 1;
+                electricityLvlTxt.setText("Level: " + electricityLvl);
+                updateSkillText(true);
+                electricityBought = true;
+                wifiBought = false;
+                miningPoolBought = false;
+
+                upgradeList.add(addPermUpgrade());
+                applyUpgrades();
+            } else {
+                cantBuyPermUpgrade();
+                updateSkillText(false);
+                electricityBought = false;
+            }
         }
     }
 
     public void onMiningPoolCLick(View v) {
-        if(skillPointSum>=upgradeCost){
-            miningPoolLvlTxt = findViewById(R.id.miningLvlTxt);
-            miningLvl+=1;
-            miningPoolLvlTxt.setText("Level: "+miningLvl);
-            updateSkillText(true);
-            wifiBought = false;
-            electricityBought = false;
-            miningPoolBought = true;
-
-            upgradeList.add(addPermUpgrade());
-            applyUpgrades();
+        if(masterSum==0) {
+          handleUpgradeBeforeClick();
         }
-        else{
-            cantBuyPermUpgrade();
-            updateSkillText(false);
-            miningPoolBought = false;
+        else {
+            if (skillPointSum >= upgradeCost) {
+                miningPoolLvlTxt = findViewById(R.id.miningLvlTxt);
+                miningLvl += 1;
+                miningPoolLvlTxt.setText("Level: " + miningLvl);
+                updateSkillText(true);
+                wifiBought = false;
+                electricityBought = false;
+                miningPoolBought = true;
+
+                upgradeList.add(addPermUpgrade());
+                applyUpgrades();
+            } else {
+                cantBuyPermUpgrade();
+                updateSkillText(false);
+                miningPoolBought = false;
+            }
         }
     }
 
