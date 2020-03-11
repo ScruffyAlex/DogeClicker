@@ -114,8 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeImage(int ranImageIndex){
         dogeView.findViewById(R.id.dogeView);
-
-        if(clickAmount>=100) {
+        if(clickAmount>=75) {
             dogeView.setImageResource(currentEventManager.icon[ranImageIndex]);
             clickAmount=0;}
         else{
@@ -181,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
         masterMultTxt.setText("Multiplier: x"+masterMult);
         clickAmount++;
-        changeImage(currentEventManager.randomNumber(1,currentEventManager.icon.length));
+        changeImage(currentEventManager.randomNumber(1,currentEventManager.icon.length-1));
     }
 
     public void onCursorClick(View v){
