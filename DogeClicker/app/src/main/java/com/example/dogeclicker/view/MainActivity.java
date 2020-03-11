@@ -105,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void backButton(View v){
+        ImageButton backBtn = findViewById(R.id.backBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
+        backBtn.startAnimation(myAnimation);
         setContentView(R.layout.activity_main);
         generateGameInfo();
     }
@@ -335,6 +338,8 @@ public class MainActivity extends AppCompatActivity {
 
     //START PERM UPGRADE CLICK LOGIC
     public void onWifiClick(View v) {
+        ImageButton wifiBtn = findViewById(R.id.wifiBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if(masterSum==0) {
             handleUpgradeBeforeClick();
         }
@@ -360,6 +365,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onElectricityClick(View v) {
+        ImageButton electricBtn = findViewById(R.id.elecBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if(masterSum==0) {
             handleUpgradeBeforeClick();
         }
@@ -385,6 +392,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onMiningPoolCLick(View v) {
+        ImageButton mineBtn = findViewById(R.id.miningBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if(masterSum==0) {
           handleUpgradeBeforeClick();
         }
@@ -410,6 +419,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onChanceClick(View v) {
+        ImageButton chanceBtn = findViewById(R.id.eventBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if (skillPointSum >= permUpgradeCost) {
             skillPointSum--;
             Event currentEvent = currentEventManager.runEvent();
