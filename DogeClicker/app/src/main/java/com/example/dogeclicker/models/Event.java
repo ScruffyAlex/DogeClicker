@@ -47,10 +47,6 @@ public class Event {
         this.goodEvent = goodEvent;
     }
 
-    public int addAmount(){
-        return 0;
-    }
-
     public boolean isSkillPointEffect() {
         return isSkillPointEffect;
     }
