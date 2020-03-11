@@ -270,6 +270,7 @@ public class MainActivity extends AppCompatActivity {
         upgrade.startAnimation(myAnimation);
         setContentView(R.layout.perm_upgrade_page);
         generateUpdateInfo();
+        upgrade.startAnimation(myAnimation);
     }
 
     //OVERALL UPGRADE LOGIC
@@ -318,6 +319,8 @@ public class MainActivity extends AppCompatActivity {
 
     //START PERM UPGRADE CLICK LOGIC
     public void onWifiClick(View v) {
+        ImageButton wifiBtn = findViewById(R.id.wifiBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if(skillPointSum>=upgradeCost){
             wifiLvlTxt = findViewById(R.id.wifiTxt);
             wifiLvl+=1;
@@ -335,9 +338,12 @@ public class MainActivity extends AppCompatActivity {
             updateSkillText(false);
             wifiBought = false;
         }
+        wifiBtn.startAnimation(myAnimation);
     }
 
     public void onElectricityClick(View v) {
+        ImageButton electricBtn = findViewById(R.id.elecBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if(skillPointSum>=upgradeCost){
             electricityLvlTxt = findViewById(R.id.electricityLvlTxt);
             electricityLvl+=1;
@@ -355,9 +361,12 @@ public class MainActivity extends AppCompatActivity {
             updateSkillText(false);
             electricityBought = false;
         }
+        electricBtn.startAnimation(myAnimation);
     }
 
     public void onMiningPoolCLick(View v) {
+        ImageButton mineBtn = findViewById(R.id.elecBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if(skillPointSum>=upgradeCost){
             miningPoolLvlTxt = findViewById(R.id.miningLvlTxt);
             miningLvl+=1;
@@ -375,9 +384,12 @@ public class MainActivity extends AppCompatActivity {
             updateSkillText(false);
             miningPoolBought = false;
         }
+        mineBtn.startAnimation(myAnimation);
     }
 
     public void onChanceClick(View v) {
+        ImageButton chanceBtn = findViewById(R.id.elecBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if (skillPointSum >= upgradeCost) {
             skillPointSum--;
             Event currentEvent = currentEventManager.runEvent();
@@ -420,9 +432,12 @@ public class MainActivity extends AppCompatActivity {
         else{
             cantBuyPermUpgrade();
         }
+        chanceBtn.startAnimation(myAnimation);
     }//end onChanceClick
 
     public void onNextPcClick(View v) {
+        ImageButton pcBtn = findViewById(R.id.typeBtn);
+        Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         if (masterSum >= prestigeCost) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("You've prestiged!");
@@ -499,6 +514,7 @@ public class MainActivity extends AppCompatActivity {
             builder.show();
         }
         generateUpdateInfo();
+        pcBtn.startAnimation(myAnimation);
     }
 
     //END PERM UPGRADE CLICK LOGIC
