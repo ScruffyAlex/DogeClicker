@@ -548,9 +548,10 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(currentPC.getPcType() == PCType.MININGRIG){
                 builder.setTitle("Best Build!");
-                builder.setMessage("You've got the best possible rig! Take 1,000,000 Doge coins instead!");
+                builder.setMessage("You've got the best possible rig! Take 1,000,000 Doge Coins and 3 skill points instead!");
                 builder.show();
                 masterSum+=100000000;
+                skillPointSum+=3;
             }
 
         }
