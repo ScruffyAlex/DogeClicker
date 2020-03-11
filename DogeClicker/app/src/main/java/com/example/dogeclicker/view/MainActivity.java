@@ -29,6 +29,9 @@ import static java.lang.System.out;
 public class MainActivity extends AppCompatActivity {
 
     EventManager currentEventManager = new EventManager();
+    PC currentPC = new PC(PCType.POTATO);
+    ArrayList<Upgrade> upgradeList = new ArrayList<>();
+
 
     public static double masterSum =0;
     public static double masterMult = 1;
@@ -43,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     static int skillPointSum = 3;
     static int clickAmount = 0;
-
-    ArrayList<Upgrade> upgradeList = new ArrayList<>();
 
     public int cursorCost = 15;
     public int cpuCost = 150;
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     TextView pcTypeTxt;
     TextView pcCostTxt;
 
-    public int upgradeCost = 1;
+    public int permUpgradeCost = 1;
     double prestigeCost = 50000;
 
 
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     boolean electricityBought = false;
     boolean miningPoolBought = false;
 
-    PC currentPC = new PC(PCType.POTATO);
+
 
 
     //VIEW LOGIC
@@ -337,7 +338,7 @@ public class MainActivity extends AppCompatActivity {
             handleUpgradeBeforeClick();
         }
         else {
-            if (skillPointSum >= upgradeCost) {
+            if (skillPointSum >= permUpgradeCost) {
                 wifiLvlTxt = findViewById(R.id.wifiTxt);
                 wifiLvl += 1;
                 wifiLvlTxt.setText("Level: " + wifiLvl);
@@ -361,7 +362,7 @@ public class MainActivity extends AppCompatActivity {
             handleUpgradeBeforeClick();
         }
         else {
-            if (skillPointSum >= upgradeCost) {
+            if (skillPointSum >= permUpgradeCost) {
                 electricityLvlTxt = findViewById(R.id.electricityLvlTxt);
                 electricityLvl += 1;
                 electricityLvlTxt.setText("Level: " + electricityLvl);
@@ -385,7 +386,7 @@ public class MainActivity extends AppCompatActivity {
           handleUpgradeBeforeClick();
         }
         else {
-            if (skillPointSum >= upgradeCost) {
+            if (skillPointSum >= permUpgradeCost) {
                 miningPoolLvlTxt = findViewById(R.id.miningLvlTxt);
                 miningLvl += 1;
                 miningPoolLvlTxt.setText("Level: " + miningLvl);
@@ -405,7 +406,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onChanceClick(View v) {
-        if (skillPointSum >= upgradeCost) {
+        if (skillPointSum >= permUpgradeCost) {
             skillPointSum--;
             Event currentEvent = currentEventManager.runEvent();
             if(currentEvent.isSkillPointEffect()){
@@ -547,7 +548,7 @@ public class MainActivity extends AppCompatActivity {
 
         public void updateSkillText (boolean canUpgrade){
             if (canUpgrade) {
-                MainActivity.skillPointSum = MainActivity.skillPointSum - upgradeCost;
+                MainActivity.skillPointSum = MainActivity.skillPointSum - permUpgradeCost;
                 skillPointTxt = findViewById(R.id.skillPointTxt);
                 skillPointTxt.setText("Skill Points: " + MainActivity.skillPointSum);
             } else {
