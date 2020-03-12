@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Upgrade> upgradeList = new ArrayList<>();
 
 
-    public static double masterSum =0;
+    public static double masterSum =50000;
     public static double masterMult = 1;
 
     static int cursorLvl = 0;
@@ -205,7 +205,6 @@ public class MainActivity extends AppCompatActivity {
                 cursorCost = cursorCost + ((cursorCost + 5) / 100 + 20);
                 cursorCostTxt.setText("Cost: " + cursorCost);
                 upgradeList.add(addBasicUpgrade());
-
                 applyUpgrades();
 
             } else {
@@ -294,8 +293,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void applyUpgrades(){
         try {
+            masterMult=1;
             for (int i = 0; i < upgradeList.size(); i++) {
-                masterMult=1;
+
                 masterMult += upgradeList.get(i).getMultiplier();
                 masterMultTxt.setText("Multiplier: x" + masterMult);
             }
