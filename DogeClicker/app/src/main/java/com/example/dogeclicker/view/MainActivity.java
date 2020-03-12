@@ -2,11 +2,12 @@ package com.example.dogeclicker.view;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,24 +29,31 @@ import static java.lang.System.out;
 
 public class MainActivity extends AppCompatActivity {
 
-    EventManager currentEventManager = new EventManager();
-    PC currentPC = new PC(PCType.POTATO);
-    ArrayList<Upgrade> upgradeList = new ArrayList<>();
-
-
-    public static double masterSum =50000;
+    public static double masterSum =0;
     public static double masterMult = 1;
 
     static int cursorLvl = 0;
     static int ramLvl = 0;
     static int cpuLvl = 0;
 
+    static int skillPointSum = 3;
+    static int clickAmount = 0;
+
+    EventManager currentEventManager = new EventManager();
+    PC currentPC = new PC(PCType.POTATO);
+    ArrayList<Upgrade> upgradeList = new ArrayList<>();
+
+    MediaPlayer rasputinPlayer;
+    MediaPlayer dorimePlayer;
+    MediaPlayer jojoPlayer;
+
+    int currentImageIndex;
+
+
     int wifiLvl = 0;
     int electricityLvl = 0;
     int miningLvl = 0;
 
-    static int skillPointSum = 3;
-    static int clickAmount = 0;
 
     public int cursorCost = 15;
     public int cpuCost = 150;
@@ -96,14 +104,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_page);
+        rasputinPlayer = MediaPlayer.create(this,R.raw.rasputin);
+        dorimePlayer = MediaPlayer.create(this,R.raw.dorime);
+        jojoPlayer = MediaPlayer.create(this,R.raw.jojo);
+        rasputinPlayer.setLooping(true);
+        jojoPlayer.setLooping(true);
+        dorimePlayer.setLooping(true);
+
     }
 
     public void launchActivity(View v){
         setContentView(R.layout.activity_main);
-       overridePendingTransition(R.anim.slideinright,R.anim.slideinleft);
-
+        overridePendingTransition(R.anim.slideinright,R.anim.slideinleft);
+        jojoPlayer.start();
 
     }
+
+
     public void backButton(View v){
         ImageButton backBtn = findViewById(R.id.backBtn);
         Animation myAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce);
@@ -112,16 +129,38 @@ public class MainActivity extends AppCompatActivity {
         generateGameInfo();
     }
 
+
+
     public void changeImage(int ranImageIndex){
+        currentImageIndex = ranImageIndex;
         dogeView.findViewById(R.id.dogeView);
         if(clickAmount>=75) {
             dogeView.setImageResource(currentEventManager.icon[ranImageIndex]);
-            clickAmount=0;}
-        else{
+            clickAmount=1;
+            changeMusic();
+            }
+    }
+
+    public void changeMusic(){
+        if(currentEventManager.icon[currentImageIndex]==R.drawable.d3){
+            rasputinPlayer.pause();
+            jojoPlayer.pause();
+            dorimePlayer.start();
 
         }
-
+        else if(currentEventManager.icon[currentImageIndex]==R.drawable.d1){
+            rasputinPlayer.pause();
+            jojoPlayer.start();
+            dorimePlayer.pause();
+        }
+        else if(currentEventManager.icon[currentImageIndex]==R.drawable.d5){
+            jojoPlayer.pause();
+            dorimePlayer.pause();
+            rasputinPlayer.start();
+        }
     }
+
+
 
     public void generateGameInfo(){
         cursorLvlText = findViewById(R.id.cursorLvl);
@@ -143,6 +182,8 @@ public class MainActivity extends AppCompatActivity {
         ramCostTxt.setText("Cost: "+ramCost);
         cpuCostTxt.setText("Cost: "+cpuCost);
         cursorCostTxt.setText("Cost: "+cursorCost);
+        clickAmount = 0;
+
     }
 
     public void generateUpdateInfo(){
@@ -179,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
 
         masterMultTxt.setText("Multiplier: x"+masterMult);
         clickAmount++;
-        changeImage(currentEventManager.randomNumber(1,currentEventManager.icon.length-1));
+        changeImage(currentEventManager.randomNumber(1,currentEventManager.icon.length)-1);
     }
 
     public void onCursorClick(View v){
