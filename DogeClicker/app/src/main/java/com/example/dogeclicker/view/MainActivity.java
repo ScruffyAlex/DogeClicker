@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     public void changeImage(int ranImageIndex){
         currentImageIndex = ranImageIndex;
         dogeView.findViewById(R.id.dogeView);
-        if(clickAmount>=4) {
+        if(clickAmount>=30) {
             dogeView.setImageResource(currentEventManager.icon[ranImageIndex]);
             clickAmount=1;
             changeMusic();
@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         masterSum = masterSum + (1*masterMult);
         masterSumTxt.setText("Coins: "+masterSum);
 
-        masterMultTxt.setText("Multiplier: x"+masterMult);
+        masterMultTxt.setText("Mult: x"+masterMult);
         clickAmount++;
         changeImage(currentEventManager.randomNumber(1,currentEventManager.icon.length)-1);
     }
