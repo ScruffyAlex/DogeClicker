@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     public void changeImage(int ranImageIndex){
         currentImageIndex = ranImageIndex;
         dogeView.findViewById(R.id.dogeView);
-        if(clickAmount>=4) {
+        if(clickAmount>=20) {
             dogeView.setImageResource(currentEventManager.icon[ranImageIndex]);
             clickAmount=1;
             changeMusic();
