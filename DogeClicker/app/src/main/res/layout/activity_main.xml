@@ -33,6 +33,7 @@
         android:text="Coins: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
+        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dogeBtn" />
 
@@ -43,9 +44,10 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/delius_unicase"
-        android:text="Multiplier: x1"
+        android:text="Mult: x1"
         android:textAlignment="center"
         android:textColor="#ffffff"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dogeBtn" />
 
@@ -59,6 +61,7 @@
         android:text="Level: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
+        android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/ramCostTxt"
         app:layout_constraintEnd_toStartOf="@+id/cpuLvl"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +78,7 @@
         android:text="Level: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
+        android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/cpuCostTxt"
         app:layout_constraintEnd_toStartOf="@+id/cursorLvl"
         app:layout_constraintHorizontal_bias="0.0"
@@ -93,6 +97,7 @@
         android:text="Level: 0"
         android:textAlignment="center"
         android:textColor="#ffffff"
+        android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/cursorCostTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cpuLvl"
@@ -115,10 +120,12 @@
         android:id="@+id/ramCostTxt"
         android:layout_width="130dp"
         android:layout_height="41dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/delius_unicase"
-        android:gravity="center"
+        android:gravity="center|center_vertical"
         android:text="Cost: 1500"
         android:textColor="#ffffff"
+        android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/ramBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ramLvl" />
@@ -127,16 +134,17 @@
         android:id="@+id/cpuCostTxt"
         android:layout_width="114dp"
         android:layout_height="50dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="9dp"
         android:fontFamily="@font/delius_unicase"
         android:gravity="center"
         android:text="Cost: 150"
         android:textColor="#ffffff"
+        android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/cpuBtn"
         app:layout_constraintStart_toEndOf="@+id/ramCostTxt"
         app:layout_constraintTop_toBottomOf="@+id/permUpgradeBtn"
-        app:layout_constraintVertical_bias="0.99" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/cursorCostTxt"
@@ -149,6 +157,7 @@
         android:gravity="center"
         android:text="Cost: 15"
         android:textColor="#ffffff"
+        android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/cursorBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.673"
