@@ -18,6 +18,7 @@
         android:fontFamily="@font/delius_unicase"
         android:text="Level: 0"
         android:textColor="#ffff"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/elecBtn"
         app:layout_constraintTop_toBottomOf="@+id/wifiSkill" />
@@ -32,6 +33,7 @@
         android:fontFamily="@font/delius_unicase"
         android:text="Level: 0"
         android:textColor="#ffff"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/miningBtn"
         app:layout_constraintTop_toBottomOf="@+id/electricitySkill" />
@@ -46,6 +48,7 @@
         android:fontFamily="@font/delius_unicase"
         android:text="Current PC Type: Potato"
         android:textColor="#ffff"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/typeBtn"
         app:layout_constraintTop_toBottomOf="@+id/miningSkill" />
@@ -169,6 +172,7 @@
         android:fontFamily="@font/delius_unicase"
         android:text="Level: 0"
         android:textColor="#ffff"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/wifiBtn"
@@ -183,6 +187,7 @@
         android:fontFamily="@font/delius_unicase"
         android:text="Skill Cost: 1"
         android:textColor="#ffff"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toEndOf="@+id/wifiBtn"
@@ -197,6 +202,7 @@
         android:fontFamily="@font/delius_unicase"
         android:text="Skill Cost: 1"
         android:textColor="#ffff"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toEndOf="@+id/wifiBtn"
@@ -211,6 +217,7 @@
         android:fontFamily="@font/delius_unicase"
         android:text="Skill Cost: 1"
         android:textColor="#ffff"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toEndOf="@+id/wifiBtn"
@@ -225,6 +232,7 @@
         android:fontFamily="@font/delius_unicase"
         android:text="Cost:  "
         android:textColor="#ffff"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/typeBtn"
         app:layout_constraintTop_toBottomOf="@+id/pcTypeTxt" />

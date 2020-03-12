@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     static int ramLvl = 0;
     static int cpuLvl = 0;
 
-    static int skillPointSum = 3;
+    static int skillPointSum = 0;
     static int clickAmount = 0;
 
     EventManager currentEventManager = new EventManager();
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     public void changeImage(int ranImageIndex){
         currentImageIndex = ranImageIndex;
         dogeView.findViewById(R.id.dogeView);
-        if(clickAmount>=75) {
+        if(clickAmount>=4) {
             dogeView.setImageResource(currentEventManager.icon[ranImageIndex]);
             clickAmount=1;
             changeMusic();
@@ -338,7 +338,7 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < upgradeList.size(); i++) {
 
                 masterMult += upgradeList.get(i).getMultiplier();
-                masterMultTxt.setText("Multiplier: x" + masterMult);
+                masterMultTxt.setText("Mult: x" + masterMult);
             }
         }
         catch(NullPointerException npe){
@@ -587,13 +587,12 @@ public class MainActivity extends AppCompatActivity {
                 currentPC.setPcType(PCType.MININGRIG);
                 masterMult = masterMult+ 500;
                 skillPointSum++;
-                prestigeCost = 50000;
+                prestigeCost = 250000000;
             }
             else if(currentPC.getPcType() == PCType.MININGRIG){
                 builder.setTitle("Best Build!");
-                builder.setMessage("You've got the best possible rig! Take 1,000,000 Doge Coins and 3 skill points instead!");
+                builder.setMessage("You've got the best possible rig! Take 3 skill points instead!");
                 builder.show();
-                masterSum+=100000000;
                 skillPointSum+=3;
             }
 
