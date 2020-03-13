@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer rasputinPlayer;
     MediaPlayer dorimePlayer;
     MediaPlayer jojoPlayer;
+    MediaPlayer bloodyPlayer;
 
     int currentImageIndex;
 
@@ -104,19 +105,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_page);
-        rasputinPlayer = MediaPlayer.create(this,R.raw.rasputin);
+//        rasputinPlayer = MediaPlayer.create(this,R.raw.rasputin);
         dorimePlayer = MediaPlayer.create(this,R.raw.dorime);
-        jojoPlayer = MediaPlayer.create(this,R.raw.jojo);
-        rasputinPlayer.setLooping(true);
-        jojoPlayer.setLooping(true);
+//        jojoPlayer = MediaPlayer.create(this,R.raw.jojo);
+        bloodyPlayer = MediaPlayer.create(this,R.raw.jojo2);
+//        rasputinPlayer.setLooping(true);
+//        jojoPlayer.setLooping(true);
         dorimePlayer.setLooping(true);
+        bloodyPlayer.setLooping(true);
 
     }
 
     public void launchActivity(View v){
         setContentView(R.layout.activity_main);
         overridePendingTransition(R.anim.slideinright,R.anim.slideinleft);
-        jojoPlayer.start();
+        bloodyPlayer.start();
 
     }
 
@@ -134,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
     public void changeImage(int ranImageIndex){
         currentImageIndex = ranImageIndex;
         dogeView.findViewById(R.id.dogeView);
-        if(clickAmount>=30) {
+        if(clickAmount>=200) {
             dogeView.setImageResource(currentEventManager.icon[ranImageIndex]);
             clickAmount=1;
             changeMusic();
@@ -143,20 +146,30 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeMusic(){
         if(currentEventManager.icon[currentImageIndex]==R.drawable.d3){
-            rasputinPlayer.pause();
-            jojoPlayer.pause();
             dorimePlayer.start();
+            bloodyPlayer.pause();
+//            rasputinPlayer.pause();
+//            jojoPlayer.pause();
 
         }
-        else if(currentEventManager.icon[currentImageIndex]==R.drawable.d1){
+//        else if(currentEventManager.icon[currentImageIndex]==R.drawable.d1){
+//            jojoPlayer.start();
+//            rasputinPlayer.pause();
+//            dorimePlayer.pause();
+//            bloodyPlayer.pause();
+//        }
+//        else if(currentEventManager.icon[currentImageIndex]==R.drawable.d5){
+//            rasputinPlayer.start();
+//            jojoPlayer.pause();
+//            dorimePlayer.pause();
+//            bloodyPlayer.pause();
+//        }
+        else if(currentEventManager.icon[currentImageIndex]==R.drawable.d4){
+            bloodyPlayer.start();
             rasputinPlayer.pause();
-            jojoPlayer.start();
-            dorimePlayer.pause();
-        }
-        else if(currentEventManager.icon[currentImageIndex]==R.drawable.d5){
-            jojoPlayer.pause();
-            dorimePlayer.pause();
-            rasputinPlayer.start();
+//            jojoPlayer.pause();
+//            dorimePlayer.pause();
+
         }
     }
 
