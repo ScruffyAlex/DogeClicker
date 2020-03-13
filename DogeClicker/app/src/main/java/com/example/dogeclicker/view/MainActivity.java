@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     static int ramLvl = 0;
     static int cpuLvl = 0;
 
-    static int skillPointSum = 0;
+    static int skillPointSum = 3;
     static int clickAmount = 0;
 
     EventManager currentEventManager = new EventManager();
@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCursorClick(View v){
-        if(clickAmount==0) {
+        if(clickAmount==20) {
         handleUpgradeBeforeClick();
         }
         else {
